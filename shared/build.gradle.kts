@@ -40,11 +40,11 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            //    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
 
 
 
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            //    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
               //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
 
@@ -56,14 +56,14 @@ kotlin {
               //  implementation "io.ktor:ktor-client-serialization:$ktor_version"
 
 // Logging
-                implementation ("io.ktor:ktor-client-logging:$ktorVersion")
+            //    implementation ("io.ktor:ktor-client-logging:$ktorVersion")
 
                 implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
 
                 api("io.insert-koin:koin-core:$koinVersion")
 
-                implementation ("io.ktor:ktor-client:1.0.0")
+            //    implementation ("io.ktor:ktor-client:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
 
             }
@@ -79,14 +79,20 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                /*
                 api("io.insert-koin:koin-android:$koinVersion")
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+
+                 */
                // implementation ("io.ktor:ktor-client-android:1.0.0")
                // implementation ("io.ktor:ktor-client-json-jvm:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
 
 
                // implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
+
+
+                implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
 
 
 
@@ -113,7 +119,8 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies{
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+               // implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                implementation("io.ktor:ktor-client-ios:$ktorVersion")
             }
         }
 

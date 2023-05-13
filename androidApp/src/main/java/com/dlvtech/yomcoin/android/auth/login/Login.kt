@@ -6,6 +6,7 @@ import androidx.compose.runtime.*
 import com.dlvtech.yomcoin.Greeting
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
+import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -32,23 +33,30 @@ fun Login(
                         Log.i("Logger", "Info")
 
             val scope = MainScope() //rememberCoroutineScope()
+            var result = ""
 
             scope.launch {
                 kotlin.runCatching {
                 //    Greeting().greeting()
 
-                    val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
-                    val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
+                    val weatherApi = WeatherApi()  //OkHttpEngine(OkHttpConfig())
+
+                    val loginUser  = ServerUtils()
+
+                    result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user") }
+
+
+                    // result = withContext(Dispatchers.IO) { weatherApi.fetchContent() }.toString()
                     //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
 
                 }.onSuccess {
-                    Log.e("Login Thread", it.toString())
+                    Log.d("Login Thread", result)
 
                     // text = it
                 }
                     .onFailure {
                       //  text = it.message.toString()
-                        Log.e("Thread error", it.toString())
+                        Log.d("Thread error", it.toString())
 
                     }
             }
@@ -112,7 +120,7 @@ fun logger() = runBlocking<Unit> {
     launch(Dispatchers.Unconfined) { // not confined -- will work with main thread
         println("Unconfined            : I'm working in thread ${Thread.currentThread().name}")
 
-        val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
+        val weatherApi = WeatherApi() //OkHttpEngine(OkHttpConfig())
         val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
         //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
 
@@ -125,7 +133,7 @@ fun logger() = runBlocking<Unit> {
     launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
         println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
         try {
-            val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
+            val weatherApi = WeatherApi() //OkHttpEngine(OkHttpConfig())
             val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
             //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
 

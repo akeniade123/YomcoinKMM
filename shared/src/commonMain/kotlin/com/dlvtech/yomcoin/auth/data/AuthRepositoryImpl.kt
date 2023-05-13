@@ -9,7 +9,9 @@ import kotlinx.coroutines.withContext
 internal class AuthRepositoryImpl(
     private val dispatcher: DispatcherProvider,
     private val authService: AuthService
-) : AuthRepository {
+) /*: AuthRepository {
+
+
     override suspend fun signUp(
         name: String,
         email: String,
@@ -19,7 +21,7 @@ internal class AuthRepositoryImpl(
             try {
                 val request = SignUpRequest(name, email, password)
 
-                val authResponse = authService.signUp(request)
+             //   val authResponse = authService.signUp(request)
 
                 if (authResponse.data == null){
                     Result.Error(
@@ -61,7 +63,9 @@ internal class AuthRepositoryImpl(
             }
         }
     }
+
 }
+*/
 
 
 

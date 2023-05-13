@@ -9,7 +9,7 @@ import com.dlvtech.yomcoin.auth.domain.usecase.SignUpUseCase
 import org.koin.dsl.module
 
 private val authModule = module {
-    single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
+   // single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
     factory { AuthService() }
     factory { SignUpUseCase() }
     factory { SignInUseCase() }
