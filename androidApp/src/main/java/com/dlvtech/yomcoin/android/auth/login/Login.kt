@@ -8,6 +8,7 @@ import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import io.ktor.client.engine.okhttp.*
 //import io.ktor.client.engine.okhttp.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -28,6 +29,9 @@ fun Login(
         onPasswordChange = viewModel::updatePassword,
         onSignInClick = {
                         Log.i("Logger", "Info")
+
+                        logger()
+
 
             /*
             val  job = Job()
@@ -84,11 +88,42 @@ fun logger() = runBlocking<Unit> {
 
     launch(Dispatchers.Unconfined) { // not confined -- will work with main thread
         println("Unconfined            : I'm working in thread ${Thread.currentThread().name}")
+
+        val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
+        val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
+        //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
+
+        Log.e("Login Thread", result.toString())
+
     }
     launch(Dispatchers.Default) { // will get dispatched to DefaultDispatcher
         println("Default               : I'm working in thread ${Thread.currentThread().name}")
     }
     launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
         println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
+        try {
+            val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
+            val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
+            //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
+
+            Log.e("Login Thread", result.toString())
+
+            /*
+            val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
+            Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
+            */
+
+        } catch (e: Exception) {
+            //   e.printStackTrace()
+            Log.e("Login Thread Error", e.toString())
+            //  Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+        }
     }
+
+
+    launch(Dispatchers.Main) {
+
+    }
+
+
 }

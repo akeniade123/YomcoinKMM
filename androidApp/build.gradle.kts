@@ -70,8 +70,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.28.0")
 
-
-  //  implementation ('io.ktor:ktor-client-okhttp:1.0.0')
+    implementation ("io.ktor:ktor-client-okhttp:1.0.0")
 
 
     /*
