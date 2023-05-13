@@ -20,4 +20,16 @@ class ServerUtils {
         return  response.bodyAsText()
     }
 
+    suspend fun getCrypto(url: String) : HttpResponse
+    {
+        val response: HttpResponse = client.get(url) {
+            headers {
+                append(HttpHeaders.Accept, "*/*")
+                append("X-CoinAPI-Key", "2F9718FF-FB0B-433F-A59F-D147B79F22EA")
+                // append(HttpHeaders.UserAgent, "ktor client")
+            }
+        }
+        return  response
+    }
+
 }
