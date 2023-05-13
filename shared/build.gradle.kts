@@ -2,7 +2,10 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     //Kotlinx ("Serialization")
+
+  //  kotlin("jvm")  // or kotlin("multiplatform") or any other kotlin plugin
     kotlin("plugin.serialization") version "1.8.20"
+  //  kotlin("plugin.serialization") version "1.8.20"
 }
 
 kotlin {
@@ -41,6 +44,11 @@ kotlin {
 
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
+              //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
+
+
+             //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
+
                 api("io.insert-koin:koin-core:$koinVersion")
 
                 implementation ("io.ktor:ktor-client:1.0.0")
@@ -62,7 +70,7 @@ kotlin {
                 api("io.insert-koin:koin-android:$koinVersion")
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
                // implementation ("io.ktor:ktor-client-android:1.0.0")
-                implementation ("io.ktor:ktor-client-json-jvm:1.0.0")
+               // implementation ("io.ktor:ktor-client-json-jvm:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
 
 
@@ -73,11 +81,9 @@ kotlin {
                 implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.3.31")
 
                 //It is actual platform implementations
-                implementation ("io.ktor:ktor-client-serialization-jvm:1.2.2")
+            //    implementation ("io.ktor:ktor-client-serialization-jvm:1.2.2")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
                 implementation ("com.squareup.sqldelight:runtime-jvm:1.1.3")
-
-
 
             }
         }

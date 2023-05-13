@@ -3,8 +3,8 @@ package com.dlvtech.yomcoin.android.auth.login
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
-//import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
-//import com.dlvtech.yomcoin.android.destinations.SignUpDestination
+import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
+import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -29,18 +29,11 @@ fun Login(
         onSignInClick = {
                         Log.i("Logger", "Info")
 
-
-
-
             /*
             val  job = Job()
             val coroutineContext: CoroutineContext
             get() = job
              */
-
-
-
-
 
             /*
             launch(Dispatchers.Main) {
@@ -59,27 +52,18 @@ fun Login(
         },// viewModel::signIn,
 
         onNavigateToHome = {
-            /*
+
             navigator.navigate(HomeScreenDestination){
                 popUpTo(0)
-
-
             }
-
-             */
         },
         onNavigateToSignUp = {
             // Log.e("Checks", "Logger")
 
-            /*
             navigator.navigate(SignUpDestination){
                 popUpTo(0)
             }
-
-             */
-
         }
-
     )
 }
 
