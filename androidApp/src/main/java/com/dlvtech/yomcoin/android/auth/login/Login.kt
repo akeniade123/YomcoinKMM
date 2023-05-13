@@ -2,7 +2,8 @@ package com.dlvtech.yomcoin.android.auth.login
 
 import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import com.dlvtech.yomcoin.Greeting
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
@@ -30,7 +31,29 @@ fun Login(
         onSignInClick = {
                         Log.i("Logger", "Info")
 
-                        logger()
+            val scope = MainScope() //rememberCoroutineScope()
+
+            scope.launch {
+                kotlin.runCatching {
+                //    Greeting().greeting()
+
+                    val weatherApi = WeatherApi(OkHttpEngine(OkHttpConfig()))
+                    val result = withContext(Dispatchers.IO) { weatherApi.fetchWeather() }
+                    //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
+
+                }.onSuccess {
+                    Log.e("Login Thread", it.toString())
+
+                    // text = it
+                }
+                    .onFailure {
+                      //  text = it.message.toString()
+                        Log.e("Thread error", it.toString())
+
+                    }
+            }
+
+                       // logger()
 
 
             /*

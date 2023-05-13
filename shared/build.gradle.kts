@@ -32,6 +32,8 @@ kotlin {
     val koinVersion = "3.3.2"
     val ktorVersion = "2.2.1"
 
+    val serializationVersion = "1.3.0"
+
     sourceSets {
 
         val commonMain by getting {
@@ -48,6 +50,16 @@ kotlin {
 
 
              //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
+
+
+                // The serialization engine used to convert objects to and from JSON.
+              //  implementation "io.ktor:ktor-client-serialization:$ktor_version"
+
+// Logging
+                implementation ("io.ktor:ktor-client-logging:$ktorVersion")
+
+                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+
 
                 api("io.insert-koin:koin-core:$koinVersion")
 

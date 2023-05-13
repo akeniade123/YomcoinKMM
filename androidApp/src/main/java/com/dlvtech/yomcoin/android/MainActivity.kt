@@ -1,18 +1,19 @@
  package com.dlvtech.yomcoin.android
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dlvtech.yomcoin.Greeting
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
 
 import android.widget.Toast
+import androidx.compose.runtime.*
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 /*
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -39,29 +40,64 @@ import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 
 
-
-
-
-
  class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            SocialAppTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                   // GreetingView(Greeting().greet())
-                    SocialApp()
-                }
-            }
-        }
-    }
-}
+     @SuppressLint("CoroutineCreationDuringComposition")
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContent {
+             SocialAppTheme {
+                 Surface(
+                     modifier = Modifier.fillMaxSize(),
+                     color = MaterialTheme.colors.background
+                 ) {
 
 
- /*
+                     val scope = MainScope() //rememberCoroutineScope()
+                     var text by remember { mutableStateOf("Loading") }
+
+
+                     scope.launch {
+                         kotlin.runCatching {
+                             Greeting().greeting()
+                         }.onSuccess {
+                             text = it
+                         }
+                             .onFailure {
+                                 text = it.message.toString()
+
+                             }
+                     }
+
+
+                     /*
+
+                     LaunchedEffect(true) {
+                         scope.launch {
+                             text = try {
+                                 Greeting().greeting()
+                             } catch (e: Exception) {
+                                 e.localizedMessage ?: "error"
+                             }
+
+                         }
+
+                       //  GreetingView(text)
+                     }
+
+                      */
+
+                 //    GreetingView(Greeting().greet())
+
+
+                    // GreetingView(text)
+                      SocialApp()
+                 }
+             }
+         }
+     }
+
+
+     /*
 
  class MainActivity : AppCompatActivity(), CoroutineScope {
      private val job = Job()
@@ -84,15 +120,16 @@ import kotlinx.coroutines.CoroutineScope
 
   */
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
+     @Composable
+     fun GreetingView(text: String) {
+         Text(text = text)
+     }
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
+     @Preview
+     @Composable
+     fun DefaultPreview() {
+         MyApplicationTheme {
+             GreetingView("Hello, Android!")
+         }
+     }
+ }

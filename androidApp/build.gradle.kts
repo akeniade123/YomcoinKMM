@@ -72,6 +72,8 @@ dependencies {
 
     implementation ("io.ktor:ktor-client-okhttp:1.0.0")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
 
     /*
     //implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version")
