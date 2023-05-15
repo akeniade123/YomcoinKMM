@@ -1,5 +1,8 @@
 package com.dlvtech.yomcoin.auth.data.eliteapi.userData
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Data(
     val Category: String,
     val Cipher: String,

@@ -66,6 +66,7 @@ kotlin {
             //    implementation ("io.ktor:ktor-client:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
 
+                implementation ("com.google.code.gson:gson:2.10.1")
             }
         }
 

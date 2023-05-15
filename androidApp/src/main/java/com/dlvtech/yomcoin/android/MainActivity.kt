@@ -50,11 +50,8 @@ import kotlinx.coroutines.CoroutineScope
                      modifier = Modifier.fillMaxSize(),
                      color = MaterialTheme.colors.background
                  ) {
-
-
                      val scope = MainScope() //rememberCoroutineScope()
                      var text by remember { mutableStateOf("Loading") }
-
 
                      scope.launch {
                          kotlin.runCatching {
@@ -64,13 +61,9 @@ import kotlinx.coroutines.CoroutineScope
                          }
                              .onFailure {
                                  text = it.message.toString()
-
                              }
                      }
-
-
                      /*
-
                      LaunchedEffect(true) {
                          scope.launch {
                              text = try {

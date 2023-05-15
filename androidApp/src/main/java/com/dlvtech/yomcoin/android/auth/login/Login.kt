@@ -43,7 +43,7 @@ fun Login(
 
                     val loginUser  = ServerUtils()
 
-                    result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user") }
+                    result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user","login") }
 
 
                     // result = withContext(Dispatchers.IO) { weatherApi.fetchContent() }.toString()
