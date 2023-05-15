@@ -3,27 +3,31 @@ package com.dlvtech.yomcoin.android.auth.login
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.*
-import com.dlvtech.yomcoin.Greeting
+import androidx.compose.ui.platform.LocalContext
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
+import com.dlvtech.yomcoin.common.util.routes
+import com.dlvtech.yomcoin.defs.login
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.ktor.client.engine.okhttp.*
 //import io.ktor.client.engine.okhttp.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.*
 
 
+
+
 @Destination
 @Composable
 fun Login(
+
     navigator: DestinationsNavigator
 ) {
+    val context = LocalContext.current
     val viewModel: LoginViewModel = koinViewModel()
     LoginScreen(
         uiState = viewModel.uiState,
@@ -43,24 +47,27 @@ fun Login(
 
                     val loginUser  = ServerUtils()
 
-                    result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user","login") }
+                    //result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user", login) }
 
+
+                    val route: String = routes().eliteApi(login)
+
+                    Log.d("APiPath", route)
+
+                    result = withContext(Dispatchers.IO){ loginUser.getContent(route, login) }
 
                     // result = withContext(Dispatchers.IO) { weatherApi.fetchContent() }.toString()
                     //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
 
                 }.onSuccess {
                     Log.d("Login Thread", result)
-
-                    // text = it
+                    Toast.makeText(context, result, Toast.LENGTH_LONG).show()
                 }
                     .onFailure {
                       //  text = it.message.toString()
                         Log.d("Thread error", it.toString())
-
                     }
             }
-
                        // logger()
 
 

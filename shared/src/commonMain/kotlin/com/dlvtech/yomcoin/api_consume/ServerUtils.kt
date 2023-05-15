@@ -1,22 +1,20 @@
 package com.dlvtech.yomcoin.api_consume
 
-import com.dlvtech.yomcoin.auth.data.eliteapi.Person
+
+import com.dlvtech.yomcoin.auth.data.eliteapi.defaultResponse
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.Data
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.User
+import com.dlvtech.yomcoin.defs.login
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
 
 class ServerUtils {
 
     private val client = HttpClient()
-
-    val login:  String = "login"
-    val signup: String = "signup"
 
     suspend fun getContent(url: String, essence: String): String {
         val response: HttpResponse = client.get(url) {
@@ -26,34 +24,47 @@ class ServerUtils {
                // append(HttpHeaders.UserAgent, "ktor client")
             }
         }
-
-        val resp = response.bodyAsText()
-
-        when(essence)
-        {
-            login -> {
-                val obj = Json.decodeFromString<User>(response.toString())
-
-                val stt: Boolean = obj.status;
-                val msg: String  = obj.message
-                val dtt: List<Data> = obj.data
+        var resp = ""
 
 
-                if(stt)
-                {
-                    //Log.e()
-                    for (i in 0 until obj.data.size) {
-                        dtt[i]
+        try {
+            val obj = Json.decodeFromString<User>(response.bodyAsText())
+            val stt: Boolean = obj.status
+            val msg: String  = obj.message
+            val dtt: List<Data> = obj.data
+
+            resp = msg
+
+            when(essence)
+            {
+                login -> {
+                    if(stt)
+                    {
+                        for (i in 0 until obj.data.size) {
+                            dtt[i]
+                        }
                     }
                 }
+            }
 
+        }
+        catch (e: Exception)
+        {
+            try{
+                val obj = Json.decodeFromString<defaultResponse>(response.bodyAsText())
+                val stt: Boolean = obj.status
+                val msg: String  = obj.message
+                if(!stt)
+                {
+                    resp = msg
+                }
+            }
+            catch (ee: Exception)
+            {
 
-
-              //  println(obj)
             }
         }
-
-        return  response.bodyAsText()
+        return  resp
     }
 
     suspend fun getCrypto(url: String) : HttpResponse
@@ -65,14 +76,6 @@ class ServerUtils {
                 // append(HttpHeaders.UserAgent, "ktor client")
 
             }
-        }
-
-        try {
-           // jo: JsonObject  = new JsonObject(response.bodyAsText())
-        }
-        catch (e: Exception)
-        {
-
         }
 
         return  response

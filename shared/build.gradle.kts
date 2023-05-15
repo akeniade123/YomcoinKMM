@@ -57,6 +57,8 @@ kotlin {
 
 // Logging
             //    implementation ("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+
 
                 implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
@@ -67,6 +69,14 @@ kotlin {
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
 
                 implementation ("com.google.code.gson:gson:2.10.1")
+
+
+            //    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
+
+            //    implementation ("io.github.microutils:kotlin-logging-jvm:3.0.5")
+
+
+             //   api("org.lighthousegames:logging:$logging_version")
             }
         }
 
@@ -143,4 +153,7 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+dependencies {
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.5")
 }
