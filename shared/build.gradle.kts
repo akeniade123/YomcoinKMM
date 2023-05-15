@@ -5,6 +5,7 @@ plugins {
 
   //  kotlin("jvm")  // or kotlin("multiplatform") or any other kotlin plugin
     kotlin("plugin.serialization") version "1.8.20"
+    id("com.squareup.sqldelight")
   //  kotlin("plugin.serialization") version "1.8.20"
 }
 
@@ -31,6 +32,9 @@ kotlin {
     val coroutinesVersion = "1.6.4"
     val koinVersion = "3.3.2"
     val ktorVersion = "2.2.1"
+
+    val sqlDelightVersion = "1.5.5"
+    val dateTimeVersion = "0.4.0"
 
     val serializationVersion = "1.3.0"
 
@@ -70,8 +74,14 @@ kotlin {
 
                 implementation ("com.google.code.gson:gson:2.10.1")
 
+                implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
 
-            //    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
+                implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
+
+
+                //    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
 
             //    implementation ("io.github.microutils:kotlin-logging-jvm:3.0.5")
 
@@ -114,6 +124,9 @@ kotlin {
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
                 implementation ("com.squareup.sqldelight:runtime-jvm:1.1.3")
 
+                implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
+
+
             }
         }
         val androidUnitTest by getting
@@ -132,6 +145,7 @@ kotlin {
             dependencies{
                // implementation("io.ktor:ktor-client-darwin:$ktorVersion")
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
             }
         }
 
