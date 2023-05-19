@@ -5,4 +5,14 @@
     <string name="password_hint">Password</string>
     <string name="signup_button_hint">Create account</string>
     <string name="login_button_label">Login</string>
+
+    <string name="successful">Successful</string>
+    <string name="unsuccessful">Unsuccessful</string>
+    <string name="no_data">No data</string>
+
+    <string name="launch_year_field">Launch year: %s</string>
+    <string name="mission_name_field">Launch name: %s</string>
+    <string name="launch_success_field">Launch success: %s</string>
+    <string name="details_field">Launch details: %s</string>
+
 </resources>

@@ -63,8 +63,8 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
-            //    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-            //    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
               //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
              //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
