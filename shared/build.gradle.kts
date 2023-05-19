@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -6,6 +8,23 @@ plugins {
   //  kotlin("jvm")  // or kotlin("multiplatform") or any other kotlin plugin
     kotlin("plugin.serialization") version "1.8.20"
     id("com.squareup.sqldelight")
+
+    /*
+
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+
+
+     */
+
+
+    /*
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.squareup.sqldelight'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+     */
   //  kotlin("plugin.serialization") version "1.8.20"
 }
 
@@ -45,17 +64,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
             //    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-
-
-
             //    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
               //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
-
-
              //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
-
-
                 // The serialization engine used to convert objects to and from JSON.
               //  implementation "io.ktor:ktor-client-serialization:$ktor_version"
 
@@ -87,7 +99,27 @@ kotlin {
 
 
              //   api("org.lighthousegames:logging:$logging_version")
+
+
+                /*
+
+                //Dagger - Hilt
+                implementation ("com.google.dagger:hilt-android:2.38.1")
+
+                kapt ("com.google.dagger:hilt-android-compiler:2.37")
+                implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+                kapt ("androidx.hilt:hilt-compiler:1.0.0")
+                implementation ("androidx.hilt:hilt-navigation-compose:1.0.0-beta01")
+
+                 */
+
+
+                // SQL Delight
+              //  implementation ("com.squareup.sqldelight:android-driver:1.5.2"
+              //  implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2"
             }
+
+
         }
 
 
@@ -170,4 +202,11 @@ android {
 }
 dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.5")
+}
+
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.dlvtech.yomcoin.shared.cache"
+    }
 }

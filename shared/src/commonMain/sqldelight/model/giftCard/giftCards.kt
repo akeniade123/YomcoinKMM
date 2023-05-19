@@ -1,0 +1,1 @@
+class giftCards : ArrayList<giftCardsItem>()

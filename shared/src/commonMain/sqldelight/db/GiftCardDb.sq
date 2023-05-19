@@ -1,0 +1,6 @@
+CREATE TABLE GiftCard  (
+    productId INTEGER NOT NULL,
+    productName TEXT NOT NULL,
+    global INTEGER AS Boolean DEFAULT NULL,
+    senderFee REAL NOT NULL
+);
