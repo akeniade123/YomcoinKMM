@@ -1,4 +1,4 @@
-package com.dlvtech.yomcoin.entity
+package com.dlvtech.yomcoin.sqldelight.entity
 
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant

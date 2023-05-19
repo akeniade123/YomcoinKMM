@@ -1,4 +1,4 @@
-package com.dlvtech.yomcoin.sqldelight
+package com.dlvtech.yomcoin.sqldelight.cache
 
 import com.squareup.sqldelight.db.SqlDriver
 
