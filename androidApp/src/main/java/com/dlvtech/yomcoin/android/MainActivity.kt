@@ -47,7 +47,7 @@ import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 
 
-
+ /*
 
  class MainActivity : AppCompatActivity() {
      private val mainScope = MainScope()
@@ -101,8 +101,8 @@ import kotlinx.coroutines.CoroutineScope
      }
  }
 
+  */
 
- /*
 
  class MainActivity : ComponentActivity() {
      @SuppressLint("CoroutineCreationDuringComposition")
@@ -118,6 +118,9 @@ import kotlinx.coroutines.CoroutineScope
                      val scope = MainScope() //rememberCoroutineScope()
                      var text by remember { mutableStateOf("Loading") }
 
+
+                     /*
+
                      scope.launch {
                          kotlin.runCatching {
                              Greeting().greeting()
@@ -128,12 +131,12 @@ import kotlinx.coroutines.CoroutineScope
                                  text = it.message.toString()
                              }
                      }
+
+                      */
                       SocialApp()
                  }
              }
          }
-
-
      }
 
      @Composable
@@ -150,5 +153,3 @@ import kotlinx.coroutines.CoroutineScope
      }
  }
 
-
-  */

@@ -18,13 +18,9 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.*
 
-
-
-
 @Destination
 @Composable
 fun Login(
-
     navigator: DestinationsNavigator
 ) {
     val context = LocalContext.current
@@ -94,14 +90,12 @@ fun Login(
         },// viewModel::signIn,
 
         onNavigateToHome = {
-
             navigator.navigate(HomeScreenDestination){
                 popUpTo(0)
             }
         },
         onNavigateToSignUp = {
             // Log.e("Checks", "Logger")
-
             navigator.navigate(SignUpDestination){
                 popUpTo(0)
             }
