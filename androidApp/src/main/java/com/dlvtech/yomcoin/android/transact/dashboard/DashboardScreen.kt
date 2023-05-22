@@ -39,7 +39,7 @@ fun DashboardScreen(
                 .fillMaxWidth()
                 .weight(1f))
             {
-
+                //SectContent(phase = basic)
             }
 
             Row(modifier = Modifier
@@ -49,6 +49,7 @@ fun DashboardScreen(
                 PaddingValues(horizontal = 16.dp, vertical = 8.dp)
                 )
                 {
+
                     /*
                     items(
                         items = sects,
@@ -59,10 +60,11 @@ fun DashboardScreen(
 
                      */
 
-                    //SectContent(basic)
+
 
                     //DashBoardListItem(dashBoardSect)
                 }
+                SectContent(modifier,basic)
                 //DashBoardListItem()
 
                 /*

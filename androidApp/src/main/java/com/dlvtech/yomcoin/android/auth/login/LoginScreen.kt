@@ -30,7 +30,9 @@ fun LoginScreen(
     onPasswordChange: (String) -> Unit,
     onNavigateToHome: () -> Unit,
     onSignInClick: () -> Unit,
-    onNavigateToSignUp: () -> Unit) {
+    onNavigateToSignUp: () -> Unit,
+    onNavigateToDashBoard: () ->Unit
+) {
     val context = LocalContext.current
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -40,7 +42,8 @@ fun LoginScreen(
                 .background(
                     color = if (isSystemInDarkTheme()) {
                         MaterialTheme.colors.background
-                    } else {
+                    }
+                    else {
                         MaterialTheme.colors.surface
                     }
                 )
@@ -87,6 +90,15 @@ fun LoginScreen(
                 onNavigateToSignUp()
             }
 
+
+            GoToDashboard(modifier)
+            {
+                onNavigateToDashBoard()
+            }
+
+
+
+
         }
 
         if (uiState.isAuthenticating) {
@@ -130,6 +142,27 @@ fun GoToSignUp(
     }
 }
 
+
+@Composable
+fun GoToDashboard(
+    modifier: Modifier = Modifier,
+    onNavigateToDashboard: () -> Unit
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(
+            SmallSpacing
+        )
+    ) {
+        Text(text = "Navigate to ", style = MaterialTheme.typography.caption)
+        Text(
+            text = "Dashboard",
+            style = MaterialTheme.typography.caption,
+            color = MaterialTheme.colors.primary,
+            modifier = modifier.clickable { onNavigateToDashboard() }
+        )
+    }
+}
+
 @Preview
 @Composable
 fun LoginScreenPreview() {
@@ -140,7 +173,8 @@ fun LoginScreenPreview() {
             onPasswordChange = {},
             onNavigateToHome = {},
             onSignInClick = {},
-            onNavigateToSignUp = {}
+            onNavigateToSignUp = {},
+            onNavigateToDashBoard = {}
         )
     }
 }

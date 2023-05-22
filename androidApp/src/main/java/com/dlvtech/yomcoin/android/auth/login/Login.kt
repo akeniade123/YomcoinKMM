@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import com.dlvtech.yomcoin.android.destinations.DashBoardDestination
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
@@ -99,12 +100,14 @@ fun Login(
             navigator.navigate(SignUpDestination){
                 popUpTo(0)
             }
+        },
+        onNavigateToDashBoard = {
+            navigator.navigate(DashBoardDestination){
+                popUpTo(0)
+            }
         }
     )
 }
-
-
-
 
 fun logger() = runBlocking<Unit> {
 
@@ -152,10 +155,7 @@ fun logger() = runBlocking<Unit> {
         }
     }
 
-
     launch(Dispatchers.Main) {
 
     }
-
-
 }
