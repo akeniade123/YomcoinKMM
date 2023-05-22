@@ -45,25 +45,6 @@ fun DashboardScreen(
             Row(modifier = Modifier
                 .fillMaxWidth())
             {
-                LazyColumn(contentPadding =
-                PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-                )
-                {
-
-                    /*
-                    items(
-                        items = sects,
-                        itemContent = {
-                            Stack
-                        }
-                    )
-
-                     */
-
-
-
-                    //DashBoardListItem(dashBoardSect)
-                }
                 SectContent(modifier,basic)
                 //DashBoardListItem()
 

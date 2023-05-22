@@ -27,8 +27,8 @@ fun SectContent(
     when(phase)
     {
         basic -> {
-            LazyColumn(
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 1.dp, vertical = 2.dp)
             ) {
                 items(
                     items = sects,
