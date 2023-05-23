@@ -23,10 +23,8 @@ fun DashboardScreen(
     uiState: DashBoardUiState
 )
 {
-
     val context = LocalContext.current
     val dashBoardSect: DashBoardSect
-    val sects = remember{ DataProvider.stackList}
 
     Box(
         modifier = modifier
@@ -45,26 +43,13 @@ fun DashboardScreen(
             Row(modifier = Modifier
                 .fillMaxWidth())
             {
-                SectContent(modifier,basic)
-                //DashBoardListItem()
-
-                /*
-                Text(text = "NotRegistered? ", style = MaterialTheme.typography.caption)
-                Text(
-                    text = "SignUp",
-                    style = MaterialTheme.typography.caption,
-                    color = MaterialTheme.colors.primary)
-
-                 */
+                val sects = remember {
+                    DataProvider.stackList
+                }
+                SectContent(modifier,basic, sects)
             }
         }
     }
-
-    /*
-    Scaffold{
-    }
-     */
-
 }
 
 

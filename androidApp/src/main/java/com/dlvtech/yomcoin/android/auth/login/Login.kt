@@ -10,6 +10,7 @@ import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 import com.dlvtech.yomcoin.common.util.routes
+import com.dlvtech.yomcoin.defs.Appbase
 import com.dlvtech.yomcoin.defs.login
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -51,7 +52,11 @@ fun Login(
 
                     Log.d("APiPath", route)
 
-                    result = withContext(Dispatchers.IO){ loginUser.getContent(route, login) }
+                    result = withContext(Dispatchers.IO){ loginUser.getContent(
+                        route,
+                        login,
+                        Appbase
+                    ) }
 
                     // result = withContext(Dispatchers.IO) { weatherApi.fetchContent() }.toString()
                     //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
@@ -59,6 +64,9 @@ fun Login(
                 }.onSuccess {
                     Log.d("Login Thread", result)
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
+                    navigator.navigate(DashBoardDestination){
+                        popUpTo(0)
+                    }
                 }
                     .onFailure {
                       //  text = it.message.toString()

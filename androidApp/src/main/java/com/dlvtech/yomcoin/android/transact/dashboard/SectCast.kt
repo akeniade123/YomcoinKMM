@@ -13,19 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.basic
+import com.dlvtech.yomcoin.model.Sect
 
 @Composable
 fun SectContent(
     modifier: Modifier = Modifier,
-    phase: String
+    phase: String,
+    sects: List<Sect>
 ) {
-
-    val sects = remember {
-        DataProvider.stackList
-    }
-
-    when(phase)
-    {
+    when(phase) {
         basic -> {
             LazyRow(
                 contentPadding = PaddingValues(horizontal = 1.dp, vertical = 2.dp)
@@ -36,17 +32,6 @@ fun SectContent(
                         SectListItem(sect = it)
                     })
             }
-
-            /*
-            Row {
-                Column {
-                    // Text(text = puppy.title, style = typography.h6)
-                    Text(text = "VIEW DETAIL", style = MaterialTheme.typography.caption)
-                }
-            }
-
-             */
         }
     }
-
 }
