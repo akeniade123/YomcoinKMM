@@ -1,16 +1,34 @@
 package com.dlvtech.yomcoin.common.util
 
+import com.dlvtech.yomcoin.defs.cntry
 import com.dlvtech.yomcoin.defs.login
 import com.dlvtech.yomcoin.defs.signup
+import com.dlvtech.yomcoin.defs.token
 
 class routes {
-
-
-    //https://www.elitepage.com.ng/rhs/user/entry
 
     fun elite(path: String): String {
         return "$base/$org/$path"
     }
+
+    fun gfcd(essence: String): String
+    {
+        var route = ""
+        when(essence)
+        {
+            token -> {
+                route = "$gfc"
+            }
+
+            cntry -> {
+                route = "$gfcntry"
+            }
+
+        }
+
+        return  route
+    }
+
 
 
     /*

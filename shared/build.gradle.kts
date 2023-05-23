@@ -75,6 +75,7 @@ kotlin {
             //    implementation ("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
 
+                api("co.touchlab:kermit:0.1.8")
 
                 implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 

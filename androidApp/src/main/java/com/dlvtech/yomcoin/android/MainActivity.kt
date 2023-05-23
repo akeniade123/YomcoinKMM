@@ -47,6 +47,9 @@ import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 
 
+
+ /*
+
  class MainActivity : AppCompatActivity() {
      private val mainScope = MainScope()
 
@@ -99,7 +102,8 @@ import kotlinx.coroutines.CoroutineScope
      }
  }
 
-/*
+
+  */
 
 
  class MainActivity : ComponentActivity() {
@@ -150,6 +154,4 @@ import kotlinx.coroutines.CoroutineScope
          }
      }
  }
-
-  */
 

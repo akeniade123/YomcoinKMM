@@ -9,11 +9,12 @@ import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
+import com.dlvtech.yomcoin.common.util.gfcntry
 import com.dlvtech.yomcoin.common.util.routes
-import com.dlvtech.yomcoin.defs.Appbase
-import com.dlvtech.yomcoin.defs.login
+import com.dlvtech.yomcoin.defs.*
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import io.ktor.client.request.forms.*
 //import io.ktor.client.engine.okhttp.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -48,15 +49,78 @@ fun Login(
                     //result = withContext(Dispatchers.IO){ loginUser.getContent("https://www.elitepage.com.ng/rhs/user", login) }
 
 
-                    val route: String = routes().eliteApi(login)
+                   // val route: String = routes().eliteApi(login)
 
+                   //
+
+
+                    val route: String = routes().gfcd(cntry)
                     Log.d("APiPath", route)
 
                     result = withContext(Dispatchers.IO){ loginUser.getContent(
                         route,
-                        login,
+                        cntry,
+                        Reloadly
+                    )}
+
+
+                    /*
+
+                    val route: String = routes().eliteApi(signup)
+                    Log.d("APiPath", route)
+
+                    val param = FormDataContent(io.ktor.http.Parameters.build {
+                        append("regId","kljnjknkjnkjnbjkkjhkhj")
+                        append("Full_Name","Adeyanju David")
+                        append("Essence","Profile")
+                        append("Password","david123")
+                    })
+
+                    result = withContext(Dispatchers.IO){ loginUser.sendPostRequest(
+                        param,
+                        user,
                         Appbase
                     ) }
+
+                     */
+
+
+                    /*
+
+                    val route: String = routes().gfcd()
+                    Log.d("APiPath", route)
+
+                    val param = FormDataContent(io.ktor.http.Parameters.build {
+                        append("client_id","FeM6pmvDovnoKjG3zquUGCeLVs0g8q07")
+                        append("client_secret","rHZWcUzNen-LNOkJtfM1eUon1vVIg7-cRYLNIQjYcY6v4EZWZTKcEiPhM5j6ChF")
+                        append("grant_type","client_credentials")
+                        append("audience","https://giftcards-sandbox.reloadly.com")
+                    })
+
+                    result = withContext(Dispatchers.IO){ loginUser.sendPostRequest(
+                        param,
+                        token,
+                        NA
+                    ) }
+
+                     */
+
+
+                    /*
+
+                    result = withContext(Dispatchers.IO){ loginUser.postRequest(
+                        route,
+                        Appbase,
+                        param
+                    ) }
+
+                     */
+
+
+
+
+
+
 
                     // result = withContext(Dispatchers.IO) { weatherApi.fetchContent() }.toString()
                     //    Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
