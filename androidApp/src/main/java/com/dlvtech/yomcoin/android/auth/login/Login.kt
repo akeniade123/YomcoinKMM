@@ -9,13 +9,15 @@ import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
-import com.dlvtech.yomcoin.common.util.gfcntry
+import com.dlvtech.yomcoin.auth.data.eliteapi.userData.User
 import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.defs.*
+import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
+import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.ktor.client.request.forms.*
-//import io.ktor.client.engine.okhttp.*
+import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
@@ -57,30 +59,75 @@ fun Login(
                     val route: String = routes().gfcd(cntry)
                     Log.d("APiPath", route)
 
-                    result = withContext(Dispatchers.IO){ loginUser.getContent(
+                    val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
                         route,
                         cntry,
                         Reloadly
-                    )}
+                    )} as List<giftCardsItem>
+
+
+                    result = rslt[2].productName
 
 
                     /*
 
+                    for (i in 0 until rslt.size) {
+                        Log.i("Product Name", rslt[i].productName)
+                    }
+
+                     */
+
+                    Log.d("Data fetched", "Check_it...")
+                    
+                    /*
+                    val route: String = routes().gfcd(bal)
+                    Log.d("APiPath", route)
+
+                    val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
+                        route,
+                        bal,
+                        Reloadly
+                    )} as Balance
+
+                    result = rslt.currencyCode+rslt.balance
+
+                    Log.d("Data fetched", "Check_it...")
+
+
+                     */
+
+
+                    /*
+
+                    for (i in 0 until rslt.size)
+                    {
+                       val  gh: giftCardsItem  = rslt[i] as giftCardsItem
+                        Log.d("Name",gh.productName)
+                    }
+
+                     */
+
+                    // List<giftCardsItem>()
+
+
+                    /*
                     val route: String = routes().eliteApi(signup)
                     Log.d("APiPath", route)
 
-                    val param = FormDataContent(io.ktor.http.Parameters.build {
+                    val param = FormDataContent(Parameters.build {
                         append("regId","kljnjknkjnkjnbjkkjhkhj")
                         append("Full_Name","Adeyanju David")
                         append("Essence","Profile")
                         append("Password","david123")
                     })
 
-                    result = withContext(Dispatchers.IO){ loginUser.sendPostRequest(
+                    val rslt:User = withContext(Dispatchers.IO){ loginUser.sendPostRequest(
                         param,
                         user,
                         Appbase
-                    ) }
+                    ) } as User
+
+                    result = rslt.message
 
                      */
 

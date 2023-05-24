@@ -19,7 +19,7 @@ import com.dlvtech.yomcoin.model.Sect
 fun SectContent(
     modifier: Modifier = Modifier,
     phase: String,
-    sects: List<Sect>
+    sects: List<Any>
 ) {
     when(phase) {
         basic -> {
@@ -29,7 +29,7 @@ fun SectContent(
                 items(
                     items = sects,
                     itemContent = {
-                        SectListItem(sect = it)
+                        SectListItem(sect = it as Sect)
                     })
             }
         }

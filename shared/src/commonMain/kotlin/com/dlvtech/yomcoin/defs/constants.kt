@@ -12,3 +12,5 @@ const val Reloadly: String =  "Reloadly"
 const val token: String = "Token"
 const val cntry: String = "Country"
 const val user: String = "User"
+
+const val bal: String = "Balance"

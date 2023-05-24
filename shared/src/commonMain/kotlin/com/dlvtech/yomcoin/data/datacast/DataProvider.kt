@@ -4,8 +4,6 @@ import com.dlvtech.yomcoin.model.Sect
 
 object DataProvider {
 
-
-
     val stackList = listOf(
         Sect(
             id = 1,

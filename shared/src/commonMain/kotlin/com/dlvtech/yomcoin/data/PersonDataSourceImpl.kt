@@ -34,5 +34,4 @@ class PersonDataSourceImpl(db: AppDatabase): PersonDataSource {
             queries.insertPerson(id, firstName, lastName)
         }
     }
-
 }

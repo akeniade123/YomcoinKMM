@@ -27,7 +27,6 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import kotlinx.coroutines.*
-
  */
 
 
@@ -36,7 +35,7 @@ class ServerUtils {
 
     private val client = HttpClient()
 
-    suspend fun getContent(url: String, essence: String, domain: String): String {
+    suspend fun getContent(url: String, essence: String, domain: String): Any {
         val response: HttpResponse = client.get(url) {
 
             when(domain)
@@ -50,12 +49,10 @@ class ServerUtils {
                     }
                 }
 
-
-
                 Reloadly ->{
                     headers {
                         append(HttpHeaders.Accept, "*/*")
-                        append(HttpHeaders.Authorization, "Bearer eyJraWQiOiJjNGE1ZWU1Zi0xYmE2LTQ1N2UtOTI3Yi1lYzdiODliNzcxZTIiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTU3OSIsImlzcyI6Imh0dHBzOi8vcmVsb2FkbHktc2FuZGJveC5hdXRoMC5jb20vIiwiaHR0cHM6Ly9yZWxvYWRseS5jb20vc2FuZGJveCI6dHJ1ZSwiaHR0cHM6Ly9yZWxvYWRseS5jb20vcHJlcGFpZFVzZXJJZCI6IjE5NTc5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXVkIjoiaHR0cHM6Ly9naWZ0Y2FyZHMtc2FuZGJveC5yZWxvYWRseS5jb20iLCJuYmYiOjE2ODQ4Mjg5NjksImF6cCI6IjE5NTc5Iiwic2NvcGUiOiJkZXZlbG9wZXIiLCJleHAiOjE2ODQ5MTUzNjksImh0dHBzOi8vcmVsb2FkbHkuY29tL2p0aSI6IjVhZTg2YTJlLWFjYjktNGJlMS1hMTc1LWU2OTQwMWNmMWZhMSIsImlhdCI6MTY4NDgyODk2OSwianRpIjoiNzI3ODIzNmEtZWI4Mi00OGNiLTliNmMtNzg1YjcyMGE0M2YzIn0.NzlERQGNlcpczDFze20NR8TmD68MrCPWfWk4nqDVigg")
+                        append(HttpHeaders.Authorization, "Bearer eyJraWQiOiJjNGE1ZWU1Zi0xYmE2LTQ1N2UtOTI3Yi1lYzdiODliNzcxZTIiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTU3OSIsImlzcyI6Imh0dHBzOi8vcmVsb2FkbHktc2FuZGJveC5hdXRoMC5jb20vIiwiaHR0cHM6Ly9yZWxvYWRseS5jb20vc2FuZGJveCI6dHJ1ZSwiaHR0cHM6Ly9yZWxvYWRseS5jb20vcHJlcGFpZFVzZXJJZCI6IjE5NTc5IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXVkIjoiaHR0cHM6Ly9naWZ0Y2FyZHMtc2FuZGJveC5yZWxvYWRseS5jb20iLCJuYmYiOjE2ODQ5MTczNTYsImF6cCI6IjE5NTc5Iiwic2NvcGUiOiJkZXZlbG9wZXIiLCJleHAiOjE2ODUwMDM3NTYsImh0dHBzOi8vcmVsb2FkbHkuY29tL2p0aSI6IjAzZjg5NjU4LTg5M2MtNDY2Zi1iNmM0LTc1N2Y4N2VlMjVkZiIsImlhdCI6MTY4NDkxNzM1NiwianRpIjoiYTMzMTU4N2EtZDJmZi00NzNmLTk2MjYtNzBmZWQ3YjJiZjU2In0.e-DBcaqya_uVXLvOVpJdoR5f0pevHYUPeFWTTSXzIng")
 
                         // append(HttpHeaders.UserAgent, "ktor client")
                     }
@@ -150,7 +147,7 @@ class ServerUtils {
     }
 
 
-    suspend fun sendPostRequest (requestBody: FormDataContent, essence:String, domain:String): String
+    suspend fun sendPostRequest (requestBody: FormDataContent, essence:String, domain:String): Any
     {
         try
         {
@@ -171,7 +168,6 @@ class ServerUtils {
                         }
                     }
                 }
-
                 setBody(requestBody)
 
             }

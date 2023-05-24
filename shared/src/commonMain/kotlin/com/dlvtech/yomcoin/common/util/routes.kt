@@ -1,9 +1,6 @@
 package com.dlvtech.yomcoin.common.util
 
-import com.dlvtech.yomcoin.defs.cntry
-import com.dlvtech.yomcoin.defs.login
-import com.dlvtech.yomcoin.defs.signup
-import com.dlvtech.yomcoin.defs.token
+import com.dlvtech.yomcoin.defs.*
 
 class routes {
 
@@ -22,6 +19,10 @@ class routes {
 
             cntry -> {
                 route = "$gfcntry"
+            }
+
+            bal -> {
+                route = "$balance"
             }
 
         }
