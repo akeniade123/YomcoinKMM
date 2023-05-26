@@ -6,6 +6,7 @@ import com.dlvtech.yomcoin.defs.*
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
 
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
+import com.dlvtech.yomcoin.model.giftcard.token
 import com.dlvtech.yomcoin.model.users.Users
 import io.ktor.client.statement.*
 import kotlinx.serialization.decodeFromString
@@ -20,13 +21,13 @@ class RequestAnalysis {
             when(essence)
             {
                 token -> {
-                    /*
+
                     val obj = Json.decodeFromString<token>(response.bodyAsText())
                     val act: String = obj.access_token
                     val exp: Int  = obj.expires_in
                     val scp: String = obj.scope
                     val tkn: String = obj.token_type
-                     */
+
                     return response.bodyAsText().toString()
                 }
 
