@@ -61,6 +61,9 @@ fun Login(
                     Log.d("APiPath", route)
 
 
+
+                    viewModel.uiState.isAuthenticating = true
+
                     val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
                         route,
                         users,

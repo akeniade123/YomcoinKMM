@@ -9,7 +9,7 @@ const val NA: String = "NA"
 const val Appbase: String = "Appbase"
 const val Reloadly: String =  "Reloadly"
 
-const val token: String = "Token"
+const val Token: String = "Token"
 const val cntry: String = "Country"
 const val user: String = "User"
 

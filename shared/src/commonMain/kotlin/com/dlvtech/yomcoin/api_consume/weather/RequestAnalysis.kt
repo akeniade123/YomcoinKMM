@@ -20,7 +20,7 @@ class RequestAnalysis {
         try{
             when(essence)
             {
-                token -> {
+                Token -> {
 
                     val obj = Json.decodeFromString<token>(response.bodyAsText())
                     val act: String = obj.access_token
