@@ -6,6 +6,7 @@ import com.dlvtech.yomcoin.defs.*
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
 
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
+import com.dlvtech.yomcoin.model.users.Users
 import io.ktor.client.statement.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -32,11 +33,17 @@ class RequestAnalysis {
                 user -> {
                     val obj = Json.decodeFromString<User>(response.bodyAsText())
 
+
                     val stt: Boolean = obj.status
                     val msg: String  = obj.message
                     val dtt: List<Data> = obj.data
 
                     return obj
+                }
+
+                users -> {
+                  //  return response.bodyAsText()
+                    return Json.decodeFromString<Users>(response.bodyAsText())
                 }
 
                 bal -> {
@@ -65,8 +72,6 @@ class RequestAnalysis {
         {
             return e.toString()
         }
-
         return NA
-
     }
 }

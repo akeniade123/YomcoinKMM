@@ -14,6 +14,7 @@ import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.defs.*
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
+import com.dlvtech.yomcoin.model.users.Users
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.ktor.client.request.forms.*
@@ -56,9 +57,20 @@ fun Login(
                    //
 
 
-                    val route: String = routes().gfcd(cntry)
+                    val route: String = routes().eliteApi(user)
                     Log.d("APiPath", route)
 
+
+                    val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
+                        route,
+                        users,
+                        Appbase
+                    )} as Users
+
+
+                    result = rslt.message
+
+                    /*
                     val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
                         route,
                         cntry,
@@ -67,6 +79,8 @@ fun Login(
 
 
                     result = rslt[2].productName
+
+                     */
 
 
                     /*
