@@ -4,23 +4,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import com.dlvtech.yomcoin.android.destinations.DashBoardDestination
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
-import com.dlvtech.yomcoin.auth.data.eliteapi.userData.User
 import com.dlvtech.yomcoin.common.util.routes
-import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
-import com.dlvtech.yomcoin.model.UserModel
-import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
-import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
 import com.dlvtech.yomcoin.model.users.Users
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.ktor.client.request.forms.*
-import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
@@ -79,7 +71,10 @@ fun Login(
                     )} as Users
 
 
-                    result = rst!!.message
+                    result = rst.message
+
+                    viewModel.updateUsers(rst)
+
 
                     /*
                     val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
@@ -117,8 +112,6 @@ fun Login(
                     result = rslt.currencyCode+rslt.balance
 
                     Log.d("Data fetched", "Check_it...")
-
-
                      */
 
 
@@ -202,12 +195,11 @@ fun Login(
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
 
 
-                    /*
-                        navigator.navigate(DashBoardDestination(rst)){
+                        navigator.navigate(viewModel.fetchUsers()
+                            ?.let { it1 -> DashBoardDestination(it1) }){
                         //popUpTo(0)
                     }
 
-                     */
 
                 }
                     .onFailure {
@@ -239,7 +231,6 @@ fun Login(
 
 
         },// viewModel::signIn,
-
         onNavigateToHome = {
             navigator.navigate(HomeScreenDestination){
                 popUpTo(0)
@@ -258,13 +249,21 @@ fun Login(
             }
 
              */
-        }
+        },
+        userDtls = viewModel::updateUsers
     )
 }
+
+private fun DestinationsNavigator.navigate(let: Any?, function: () -> Unit) {
+    TODO("Not yet implemented")
+}
+
 
 private fun DestinationsNavigator.navigate(dashBoardDestination: Any, function: () -> Unit) {
 
 }
+
+
 
 fun DashBoardDestination(users: Users): Any {
     return  users

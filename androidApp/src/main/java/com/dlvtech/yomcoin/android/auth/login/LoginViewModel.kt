@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dlvtech.yomcoin.auth.domain.usecase.SignInUseCase
 import com.dlvtech.yomcoin.common.util.Result
+import com.dlvtech.yomcoin.model.users.Users
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -45,6 +46,14 @@ class LoginViewModel(
     fun updatePassword(input: String){
         uiState = uiState.copy(password = input)
     }
+
+    fun updateUsers(userz: Users?){
+        uiState = uiState.copy(users = userz)
+    }
+
+    fun fetchUsers(): Users? {
+        return uiState.users
+    }
 }
 
 data class LoginUiState(
@@ -52,7 +61,8 @@ data class LoginUiState(
     var password: String = "",
     var isAuthenticating: Boolean = false,
     var authErrorMessage: String? = null,
-    var authenticationSucceed: Boolean = false
+    var authenticationSucceed: Boolean = false,
+    var users: Users? = null
 )
 
 
