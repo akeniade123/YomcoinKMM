@@ -194,11 +194,14 @@ fun Login(
                     Log.d("Login Thread", result)
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
 
-
+                    /*
                         navigator.navigate(viewModel.fetchUsers()
                             ?.let { it1 -> DashBoardDestination(it1) }){
                         //popUpTo(0)
                     }
+
+
+                     */
 
 
                 }
@@ -254,6 +257,9 @@ fun Login(
     )
 }
 
+
+/*
+
 private fun DestinationsNavigator.navigate(let: Any?, function: () -> Unit) {
     TODO("Not yet implemented")
 }
@@ -262,6 +268,8 @@ private fun DestinationsNavigator.navigate(let: Any?, function: () -> Unit) {
 private fun DestinationsNavigator.navigate(dashBoardDestination: Any, function: () -> Unit) {
 
 }
+
+ */
 
 
 
