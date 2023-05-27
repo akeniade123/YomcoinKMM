@@ -8,14 +8,19 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
 
 
-@Destination
+@Destination(navArgsDelegate = SendArgNav::class)
 @Composable
 fun DashBoard(
-    navigator: DestinationsNavigator
+    navigator: DestinationsNavigator,
+    nav: SendArgNav
 ){
     val context = LocalContext.current
     val viewModel: DashboardViewModel = koinViewModel()
     DashboardScreen(
-        uiState = viewModel.uiState
+        uiState = viewModel.uiState,
+        usrs = viewModel::updateUsers //UserModel("Hello", "Hi!")
     )
 }
+
+
+data class SendArgNav(val data1: Int)

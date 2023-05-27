@@ -1,6 +1,7 @@
 package com.dlvtech.yomcoin.data.datacast
 
 import com.dlvtech.yomcoin.model.Sect
+import com.dlvtech.yomcoin.model.users.Users
 
 object DataProvider {
 
@@ -22,4 +23,6 @@ object DataProvider {
             description = "Beezy's favorite past-time is helping you choose your brand color."
         )
     )
+
+    val usrList = Users
 }

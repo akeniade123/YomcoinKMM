@@ -13,7 +13,7 @@ class routes {
         var route = ""
         when(essence)
         {
-            token -> {
+            Token -> {
                 route = "$gfc"
             }
 

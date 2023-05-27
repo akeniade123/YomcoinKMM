@@ -11,7 +11,9 @@ import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.User
 import com.dlvtech.yomcoin.common.util.routes
+import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
+import com.dlvtech.yomcoin.model.UserModel
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.Balance
 import com.dlvtech.yomcoin.model.giftcard.giftcardTerrain.giftCardsItem
 import com.dlvtech.yomcoin.model.users.Users
@@ -24,7 +26,7 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.*
 
-@Destination
+@Destination(start = true)
 @Composable
 fun Login(
     navigator: DestinationsNavigator
@@ -40,6 +42,12 @@ fun Login(
 
             val scope = MainScope() //rememberCoroutineScope()
             var result = ""
+
+            var rst: Users
+
+
+
+
 
             scope.launch {
                 kotlin.runCatching {
@@ -64,14 +72,14 @@ fun Login(
 
                     viewModel.uiState.isAuthenticating = true
 
-                    val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
+                    rst = withContext(Dispatchers.IO){ loginUser.getContent(
                         route,
                         users,
                         Appbase
                     )} as Users
 
 
-                    result = rslt.message
+                    result = rst!!.message
 
                     /*
                     val rslt = withContext(Dispatchers.IO){ loginUser.getContent(
@@ -192,9 +200,15 @@ fun Login(
                 }.onSuccess {
                     Log.d("Login Thread", result)
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
-                    navigator.navigate(DashBoardDestination){
-                        popUpTo(0)
+
+
+                    /*
+                        navigator.navigate(DashBoardDestination(rst)){
+                        //popUpTo(0)
                     }
+
+                     */
+
                 }
                     .onFailure {
                       //  text = it.message.toString()
@@ -238,11 +252,22 @@ fun Login(
             }
         },
         onNavigateToDashBoard = {
+            /*
             navigator.navigate(DashBoardDestination){
                 popUpTo(0)
             }
+
+             */
         }
     )
+}
+
+private fun DestinationsNavigator.navigate(dashBoardDestination: Any, function: () -> Unit) {
+
+}
+
+fun DashBoardDestination(users: Users): Any {
+    return  users
 }
 
 fun logger() = runBlocking<Unit> {
