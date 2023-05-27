@@ -194,6 +194,9 @@ fun Login(
                     Log.d("Login Thread", result)
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
 
+                    navigator.navigate(viewModel.fetchUsers()
+                        ?.let { it1 -> DashBoardDestination(it1) })
+
                     /*
                         navigator.navigate(viewModel.fetchUsers()
                             ?.let { it1 -> DashBoardDestination(it1) }){
@@ -255,6 +258,10 @@ fun Login(
         },
         userDtls = viewModel::updateUsers
     )
+}
+
+private fun DestinationsNavigator.navigate(let: Any?) {
+
 }
 
 
