@@ -97,10 +97,6 @@ fun LoginScreen(
             {
                 onNavigateToDashBoard()
             }
-
-
-
-
         }
 
         if (uiState.isAuthenticating) {
