@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.dlvtech.yomcoin.android.destinations.HomeScreenDestination
+import com.dlvtech.yomcoin.android.destinations.PrelimDestination
 import com.dlvtech.yomcoin.android.destinations.SignUpDestination
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
@@ -18,7 +19,7 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.*
 
-@Destination(start = true)
+
 @Composable
 fun Login(
     navigator: DestinationsNavigator
@@ -194,8 +195,21 @@ fun Login(
                     Log.d("Login Thread", result)
                     Toast.makeText(context, result, Toast.LENGTH_LONG).show()
 
+                   /*
+                    navigator.navigate(HomeScreenDestination){
+                popUpTo(0)
+            }
+                    */
+                    navigator.navigate(PrelimDestination)
+                    {
+                        popUpTo(0)
+                    }
+
+                    /*
                     navigator.navigate(viewModel.fetchUsers()
                         ?.let { it1 -> DashBoardDestination(it1) })
+
+                     */
 
                     /*
                         navigator.navigate(viewModel.fetchUsers()
@@ -249,6 +263,12 @@ fun Login(
             }
         },
         onNavigateToDashBoard = {
+
+            navigator.navigate(PrelimDestination)
+            {
+                popUpTo(0)
+            }
+
             /*
             navigator.navigate(DashBoardDestination){
                 popUpTo(0)
