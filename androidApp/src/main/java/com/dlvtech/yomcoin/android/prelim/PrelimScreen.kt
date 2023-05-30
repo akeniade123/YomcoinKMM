@@ -32,11 +32,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
 import com.dlvtech.yomcoin.android.model.casts.Pane
+import com.dlvtech.yomcoin.android.model.casts.Tabbed
 import com.dlvtech.yomcoin.android.theme.theme1.Club
 import com.dlvtech.yomcoin.android.transact.dashboard.SectContent
 import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.basic
+import com.dlvtech.yomcoin.defs.transfer
 import androidx.compose.ui.Modifier as Modifier1
+
+
+val BaseColor:Color = Color(169,16,164)
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -53,7 +58,31 @@ fun PrelimScreen(
     }
 
 
-    val BaseColor:Color = Color(169,16,164)
+    val panes = listOf(
+        Pane(
+            "Main Account",
+            "",
+            Color.Black,
+            listOf(
+                Tabbed(
+                    "",
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player)
+                )
+            )
+        ),
+        Pane(
+            "Crypto",
+            "",
+            BaseColor,
+            listOf(
+                Tabbed(
+                    "",
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player))))
+    )
+
+
+
+
 
     val clubs = listOf(
         Club(
@@ -121,9 +150,17 @@ fun PrelimScreen(
                 modifier = Modifier1.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
+                items(panes){ pane ->
+                    AccountPane(pane)
+                }
+
+                /*
                 items(clubs) { club ->
                     ClubItem(club)
                 }
+                 */
+
+
             }
 
             Spacer(modifier = Modifier1.size(30.dp))
@@ -207,20 +244,33 @@ data class Pane(
 )
  */
 
+/*
+val sects = listOf(
+    Pane(
+        "Main Account",
+        "Default transactions",
+        BaseColor
+    )
+)
+
+ */
+
 @Preview
 @Composable
 fun AccountPane(
     acct: Pane = Pane(
         "Main Account",
         "Default transactions",
-        painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player)
-    )
+        BaseColor,
+        listOf(Tabbed("",painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player))))
 )
 {
     val pntr:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.hide_eye_icon_filled)
 
     Box(
-        modifier = Modifier1,
+        modifier = Modifier1
+            .clip(shape = RoundedCornerShape(10.dp))
+            .background(acct.color),
         contentAlignment = Alignment.Center
     )
     {
@@ -230,7 +280,7 @@ fun AccountPane(
                 .padding(top = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(Modifier1.width(120.dp)) {
+            Column(Modifier1.width(300.dp)) {
                 Image(
                     painter = pntr,
                     contentDescription = "Visibility",
@@ -246,7 +296,12 @@ fun AccountPane(
                         .padding(top = 12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-
+                    LazyRow(modifier = Modifier1.fillMaxWidth())
+                    {
+                        items(acct.tabs){ tab->
+                            TabStack(name = tab.name, pntr = tab.image )
+                        }
+                    }
                 }
             }
         }
@@ -254,8 +309,26 @@ fun AccountPane(
 }
 
 @Composable
-fun Tabs()
+fun TabStack(name:String, pntr: Painter)
 {
+    Column(modifier = Modifier1,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = name,
+            color = Color.Black,
+            fontSize = MaterialTheme.typography.h6.fontSize,
+            modifier = Modifier1.padding(bottom = 10.dp)
+        )
+
+        Image(
+            painter = pntr,
+            contentDescription = "A poster image of a tennis player",
+            contentScale = ContentScale.FillBounds
+        )
+
+
+    }
 
 }
 

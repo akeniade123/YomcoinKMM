@@ -16,3 +16,7 @@ const val user: String = "User"
 const val users: String = "Users"
 
 const val bal: String = "Balance"
+
+const val add_fund: String = "Add Fund"
+const val transfer: String = "Transfer"
+const val withdraw: String = "Withdraw"
