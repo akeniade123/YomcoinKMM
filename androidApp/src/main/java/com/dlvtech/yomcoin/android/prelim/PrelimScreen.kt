@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
+import com.dlvtech.yomcoin.android.model.casts.Pane
 import com.dlvtech.yomcoin.android.theme.theme1.Club
 import com.dlvtech.yomcoin.android.transact.dashboard.SectContent
 import com.dlvtech.yomcoin.data.datacast.DataProvider
@@ -198,6 +199,59 @@ fun PrelimScreenPreview()
 }
 
 
+/*
+data class Pane(
+    var title: String,
+    var desc:  String,
+    var image: Painter
+)
+ */
+
+@Preview
+@Composable
+fun AccountPane(
+    acct: Pane = Pane(
+        "Main Account",
+        "Default transactions",
+        painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player)
+    )
+)
+{
+    val pntr:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.hide_eye_icon_filled)
+
+    Box(
+        modifier = Modifier1,
+        contentAlignment = Alignment.Center
+    )
+    {
+        Row(
+            modifier = Modifier1
+                .padding(start = 10.dp)
+                .padding(top = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(Modifier1.width(120.dp)) {
+                Image(
+                    painter = pntr,
+                    contentDescription = "Visibility",
+                    contentScale = ContentScale.FillBounds
+                )
+                Spacer(
+                    modifier = Modifier1.height(70.dp)
+                )
+
+                Row(
+                    modifier = Modifier1
+                        .padding(start = 10.dp)
+                        .padding(top = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                }
+            }
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
@@ -208,7 +262,6 @@ fun ClubItem(
         painterResource(id = com.dlvtech.yomcoin.android.R.drawable.men_tennis_player)
     )
 ) {
-
     Box(
         modifier = Modifier1
             .clip(shape = RoundedCornerShape(30.dp))

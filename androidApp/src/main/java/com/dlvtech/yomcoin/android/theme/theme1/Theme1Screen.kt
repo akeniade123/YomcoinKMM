@@ -262,7 +262,6 @@ fun TrainItem() {
                 modifier = Modifier.padding(7.dp),
             )
         }
-
     }
 }
 
