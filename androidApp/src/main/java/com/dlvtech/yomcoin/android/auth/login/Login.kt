@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 import org.koin.androidx.compose.koinViewModel
 import kotlinx.coroutines.*
 
-
+@Destination
 @Composable
 fun Login(
     navigator: DestinationsNavigator

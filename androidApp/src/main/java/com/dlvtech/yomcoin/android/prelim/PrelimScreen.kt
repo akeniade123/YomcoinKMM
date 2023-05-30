@@ -51,6 +51,9 @@ fun PrelimScreen(
         DataProvider.stackList
     }
 
+
+    val BaseColor:Color = Color(169,16,164)
+
     val clubs = listOf(
         Club(
             "Women's Club",
@@ -76,7 +79,7 @@ fun PrelimScreen(
 
                 IconButton(modifier = Modifier1
                     .clip(shape = RoundedCornerShape(25))
-                    .background(Color.Black),
+                    .background(BaseColor),
                     onClick = { /*TODO*/ }) {
                     Icon(
                         imageVector = Icons.Default.Menu,
@@ -91,7 +94,7 @@ fun PrelimScreen(
                     Icon(
                         imageVector = Icons.Filled.Search,
                         contentDescription = "Search Icon",
-                        tint = Color.Black,
+                        tint = BaseColor,
                         modifier = Modifier1.size(32.dp)
                     )
                 }
@@ -193,6 +196,7 @@ fun PrelimScreenPreview()
         PrelimScreen(uiState = PrelimUiState())
     }
 }
+
 
 
 @Preview(showBackground = true)

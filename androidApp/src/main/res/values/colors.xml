@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#102027</color>
     <color name="colorAccent">#62727b</color>
 
+
+    <color name="colorBase">#A910A4</color>
+
     <color name="colorSuccessful">#4BB543</color>
     <color name="colorUnsuccessful">#FC100D</color>
     <color name="colorNoData">#615F5F</color>
