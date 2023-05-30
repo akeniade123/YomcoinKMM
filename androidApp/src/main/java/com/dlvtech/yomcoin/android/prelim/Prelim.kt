@@ -7,7 +7,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
 
 
-@Destination
+@Destination(start = true)
 @Composable
 fun Prelim(
     navigator: DestinationsNavigator
