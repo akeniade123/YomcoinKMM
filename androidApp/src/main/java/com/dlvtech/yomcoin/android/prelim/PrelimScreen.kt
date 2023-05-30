@@ -253,6 +253,12 @@ fun AccountPane(
     }
 }
 
+@Composable
+fun Tabs()
+{
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun ClubItem(
