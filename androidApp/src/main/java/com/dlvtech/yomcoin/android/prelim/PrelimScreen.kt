@@ -23,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -145,12 +146,60 @@ fun PrelimScreen(
                 .padding(start = 24.dp)
         ) {
 
+            Row(
+                modifier = Modifier1
+                    .fillMaxWidth()
+                    .padding(end = 16.dp, bottom = 10.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val pntr:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.profile_pix)
+
+                Row()
+                {
+                    Image(
+                        painter = pntr,
+                        contentDescription = "Visibility",
+                        contentScale = ContentScale.FillBounds
+                    )
+
+                    Column() {
+                        Text(
+                            text = "Welcome",
+                            color = Color.Black,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Normal,
+                            fontStyle = FontStyle.Italic
+                        )
+
+                        Text(
+                            text = "Adeyinka",
+                            color = Color.Black,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                    }
+
+
+                }
+
+
+                Text(
+                    text = "Alles",
+                    color = colorResource(id = com.dlvtech.yomcoin.android.R.color.green),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+
             Text(
-                text = stringResource(id = com.dlvtech.yomcoin.android.R.string.wallet),
+                text = "Wallet",
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
-                fontSize = MaterialTheme.typography.h5.fontSize,
-                modifier = Modifier1.padding(bottom = 20.dp)
+                fontSize = 12.sp,
+                modifier = Modifier1.padding(bottom = 10.dp)
             )
 
             LazyRow(
@@ -172,27 +221,7 @@ fun PrelimScreen(
 
             Spacer(modifier = Modifier1.size(30.dp))
 
-            Row(
-                modifier = Modifier1
-                    .fillMaxWidth()
-                    .padding(end = 16.dp, bottom = 10.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Train",
-                    color = Color.Black,
-                    fontSize = MaterialTheme.typography.h5.fontSize,
-                    fontWeight = FontWeight.Bold
-                )
 
-                Text(
-                    text = "Alles",
-                    color = colorResource(id = com.dlvtech.yomcoin.android.R.color.green),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
 
             Column {
                 for (i in 1..2) {
@@ -304,7 +333,8 @@ fun AccountPane(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     LazyRow(
-                        modifier = Modifier1.fillMaxWidth()
+                        modifier = Modifier1
+                            .fillMaxWidth()
                             .padding(start = 12.dp),
                         horizontalArrangement = Arrangement.spacedBy(60.dp)
                     )
