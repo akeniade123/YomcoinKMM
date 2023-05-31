@@ -1,17 +1,14 @@
 package com.dlvtech.yomcoin.android.prelim
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -36,13 +33,15 @@ import com.dlvtech.yomcoin.android.model.casts.Tabbed
 import com.dlvtech.yomcoin.android.theme.theme1.Club
 import com.dlvtech.yomcoin.android.transact.dashboard.SectContent
 import com.dlvtech.yomcoin.data.datacast.DataProvider
+import com.dlvtech.yomcoin.defs.add_fund
 import com.dlvtech.yomcoin.defs.basic
 import com.dlvtech.yomcoin.defs.transfer
+import com.dlvtech.yomcoin.defs.withdraw
 import androidx.compose.ui.Modifier as Modifier1
 
 
 val BaseColor:Color = Color(169,16,164)
-
+val AccentColor:Color = Color(228,79,223)
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -62,11 +61,19 @@ fun PrelimScreen(
         Pane(
             "Main Account",
             "",
-            Color.Black,
+            AccentColor,
             listOf(
                 Tabbed(
-                    "",
-                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player)
+                    add_fund,
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.add_fund)
+                ),
+                Tabbed(
+                    transfer,
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.transfer)
+                ),
+                Tabbed(
+                    withdraw,
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.withdraw_cash)
                 )
             )
         ),
@@ -76,12 +83,12 @@ fun PrelimScreen(
             BaseColor,
             listOf(
                 Tabbed(
-                    "",
-                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.tennis_player))))
+                    withdraw,
+                    painterResource(id = com.dlvtech.yomcoin.android.R.drawable.withdraw_cash)
+                )
+            )
+        )
     )
-
-
-
 
 
     val clubs = listOf(
@@ -280,14 +287,14 @@ fun AccountPane(
                 .padding(top = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(Modifier1.width(300.dp)) {
+            Column(Modifier1.width(320.dp)) {
                 Image(
                     painter = pntr,
                     contentDescription = "Visibility",
                     contentScale = ContentScale.FillBounds
                 )
                 Spacer(
-                    modifier = Modifier1.height(70.dp)
+                    modifier = Modifier1.height(40.dp)
                 )
 
                 Row(
@@ -296,7 +303,11 @@ fun AccountPane(
                         .padding(top = 12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LazyRow(modifier = Modifier1.fillMaxWidth())
+                    LazyRow(
+                        modifier = Modifier1.fillMaxWidth()
+                            .padding(start = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(60.dp)
+                    )
                     {
                         items(acct.tabs){ tab->
                             TabStack(name = tab.name, pntr = tab.image )
@@ -311,25 +322,25 @@ fun AccountPane(
 @Composable
 fun TabStack(name:String, pntr: Painter)
 {
+    val imageModifier = Modifier1
+        .size(30.dp)
+
     Column(modifier = Modifier1,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = name,
-            color = Color.Black,
-            fontSize = MaterialTheme.typography.h6.fontSize,
-            modifier = Modifier1.padding(bottom = 10.dp)
-        )
-
         Image(
             painter = pntr,
-            contentDescription = "A poster image of a tennis player",
-            contentScale = ContentScale.FillBounds
+            modifier = imageModifier,
+            contentDescription = "A poster image of a tennis player"
         )
 
-
+        Text(
+            text = name,
+            color = Color.White,
+            fontSize = 8.sp,
+            modifier = Modifier1.padding(bottom = 10.dp)
+        )
     }
-
 }
 
 @Preview(showBackground = true)
@@ -455,10 +466,3 @@ fun TrainItem() {
 
     }
 }
-
-
-data class Club(
-    var title: String,
-    var color: Color,
-    var image: Painter
-)
