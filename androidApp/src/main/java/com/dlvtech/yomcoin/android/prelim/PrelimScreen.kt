@@ -13,6 +13,9 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.rounded.AddCircle
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
+import com.dlvtech.yomcoin.android.model.casts.BottomNavItem
 import com.dlvtech.yomcoin.android.model.casts.Pane
 import com.dlvtech.yomcoin.android.model.casts.Tabbed
 import com.dlvtech.yomcoin.android.theme.theme1.Club
@@ -106,6 +110,29 @@ fun PrelimScreen(
     )
 
 
+
+    val bottomNavItems = listOf(
+        BottomNavItem(
+            name = "Home",
+            route = "home",
+            icon = Icons.Rounded.Home,
+        ),
+        BottomNavItem(
+            name = "Create",
+            route = "add",
+            icon = Icons.Rounded.AddCircle,
+        ),
+        BottomNavItem(
+            name = "Settings",
+            route = "settings",
+            icon = Icons.Rounded.Settings,
+        ),
+    )
+
+  //  val backStackEntry = navController.currentBackStackEntryAsState()
+
+
+
     Scaffold(
         backgroundColor = Color.White,
         topBar = {
@@ -137,7 +164,35 @@ fun PrelimScreen(
                     )
                 }
             }
+        },
+        bottomBar = {
+            BottomAppBar(
+                backgroundColor = BaseColor,
+                elevation = 0.dp
+            ) {
+                IconButton(modifier = Modifier1
+                    .clip(shape = RoundedCornerShape(25))
+                    .background(BaseColor),
+                    onClick = { /*TODO*/ }) {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = "menu",
+                        tint = Color.White
+                    )
+                }
+
+
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = "Search Icon",
+                        modifier = Modifier1.size(32.dp)
+                    )
+                }
+            }
         }
+
+
     ) {
         Column(
             modifier = Modifier1
@@ -154,16 +209,30 @@ fun PrelimScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 val pntr:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.profile_pix)
+                val invc:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.transactions)
+                val qrsc:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.qr_scan)
+                val ccre:Painter = painterResource(id = com.dlvtech.yomcoin.android.R.drawable.c_care)
+
+                val imageModifier = Modifier1
+                    .size(45.dp)
+
+                val imageModifier_1 = Modifier1
+                    .size(25.dp)
 
                 Row()
                 {
                     Image(
                         painter = pntr,
                         contentDescription = "Visibility",
+                        modifier = imageModifier,
                         contentScale = ContentScale.FillBounds
                     )
 
-                    Column() {
+                  //  Spacer(modifier = Modifier1.size(7.dp))
+
+                    Column(modifier = Modifier1
+                        .padding(start = 2.dp)
+                        .padding(top = 15.dp)) {
                         Text(
                             text = "Welcome",
                             color = Color.Black,
@@ -178,21 +247,40 @@ fun PrelimScreen(
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold
                         )
-
                     }
-
-
                 }
 
+                Row(
+                    modifier = Modifier1,
+                    horizontalArrangement = Arrangement.SpaceBetween
 
-                Text(
-                    text = "Alles",
-                    color = colorResource(id = com.dlvtech.yomcoin.android.R.color.green),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                ){
+                    Image(
+                        painter = invc,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+
+                    Spacer(modifier = Modifier1.size(30.dp))
+
+                    Image(
+                        painter = qrsc,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+
+                    Spacer(modifier = Modifier1.size(30.dp))
+
+                    Image(
+                        painter = ccre,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
             }
-
 
             Text(
                 text = "Wallet",
@@ -219,15 +307,19 @@ fun PrelimScreen(
 
             }
 
-            Spacer(modifier = Modifier1.size(30.dp))
+            Spacer(modifier = Modifier1.size(10.dp))
 
 
 
+
+            /*
             Column {
                 for (i in 1..2) {
                     TrainItem()
                 }
             }
+
+             */
         }
     }
 

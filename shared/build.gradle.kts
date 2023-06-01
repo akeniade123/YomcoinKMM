@@ -57,6 +57,12 @@ kotlin {
 
     val serializationVersion = "1.3.0"
 
+
+    val material3_version = "1.0.1"
+
+
+
+
     sourceSets {
 
         val commonMain by getting {
@@ -82,7 +88,9 @@ kotlin {
 
                 api("io.insert-koin:koin-core:$koinVersion")
 
-            //    implementation ("io.ktor:ktor-client:1.0.0")
+
+
+                //    implementation ("io.ktor:ktor-client:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1")
 
                 implementation ("com.google.code.gson:gson:2.10.1")
@@ -148,6 +156,8 @@ kotlin {
 
                 implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
 
+
+                implementation ("androidx.compose.material3:material3:$material3_version")
 
 
                 implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.3.31")
