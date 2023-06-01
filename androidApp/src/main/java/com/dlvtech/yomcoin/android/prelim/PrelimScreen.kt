@@ -132,6 +132,24 @@ fun PrelimScreen(
   //  val backStackEntry = navController.currentBackStackEntryAsState()
 
 
+    val pnn: Pane = Pane(
+        "Main Account",
+        "Default transactions",
+        BaseColor,
+        listOf(
+            Tabbed("",
+                painterResource(id = com.dlvtech.yomcoin.android.R.drawable.add_fund)
+            ),
+            Tabbed("",
+                painterResource(id = com.dlvtech.yomcoin.android.R.drawable.transfer)
+            ),
+            Tabbed("",
+                painterResource(id = com.dlvtech.yomcoin.android.R.drawable.withdraw_cash)
+            )
+        )
+    )
+
+
 
     Scaffold(
         backgroundColor = Color.White,
@@ -170,24 +188,16 @@ fun PrelimScreen(
                 backgroundColor = BaseColor,
                 elevation = 0.dp
             ) {
-                IconButton(modifier = Modifier1
-                    .clip(shape = RoundedCornerShape(25))
-                    .background(BaseColor),
-                    onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Menu,
-                        contentDescription = "menu",
-                        tint = Color.White
-                    )
-                }
-
-
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon",
-                        modifier = Modifier1.size(32.dp)
-                    )
+                LazyRow(
+                    modifier = Modifier1
+                        .fillMaxWidth()
+                        .padding(start = 12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(60.dp)
+                )
+                {
+                    items(pnn.tabs){ tab->
+                        TabStack(name = tab.name, pntr = tab.image)
+                    }
                 }
             }
         }
@@ -308,9 +318,6 @@ fun PrelimScreen(
             }
 
             Spacer(modifier = Modifier1.size(10.dp))
-
-
-
 
             /*
             Column {
