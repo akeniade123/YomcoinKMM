@@ -32,9 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
-import com.dlvtech.yomcoin.android.model.casts.BottomNavItem
-import com.dlvtech.yomcoin.android.model.casts.Pane
-import com.dlvtech.yomcoin.android.model.casts.Tabbed
+import com.dlvtech.yomcoin.casts.BottomNavItem
+import com.dlvtech.yomcoin.casts.Pane
+import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.android.theme.theme1.Club
 import com.dlvtech.yomcoin.android.transact.dashboard.SectContent
 import com.dlvtech.yomcoin.data.datacast.DataProvider

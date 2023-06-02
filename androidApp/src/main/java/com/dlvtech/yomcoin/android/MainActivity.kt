@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.dlvtech.yomcoin.api_consume.weather.WeatherApi
+import com.dlvtech.yomcoin.common.App
 import com.dlvtech.yomcoin.sqldelight.SpaceXSDK
 import com.dlvtech.yomcoin.sqldelight.cache.DatabaseDriverFactory
 /*
@@ -135,7 +136,10 @@ import kotlinx.coroutines.CoroutineScope
                      }
 
                       */
-                      SocialApp()
+                    // SocialApp()
+
+                     App()
+
                  }
              }
          }

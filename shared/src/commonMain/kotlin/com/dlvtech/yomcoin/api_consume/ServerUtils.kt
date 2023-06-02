@@ -1,7 +1,7 @@
 package com.dlvtech.yomcoin.api_consume
 
 
-import co.touchlab.kermit.Kermit
+//import co.touchlab.kermit.Kermit
 import com.dlvtech.yomcoin.api_consume.weather.RequestAnalysis
 import com.dlvtech.yomcoin.auth.data.eliteapi.defaultResponse
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.Data
@@ -228,7 +228,7 @@ class ServerUtils {
 
        // Log.v("Ktor", "Hello")
 
-        val kermit = Kermit()
+      //  val kermit = Kermit()
 
 
 
@@ -270,11 +270,11 @@ class ServerUtils {
             }
             catch (ee: Exception)
             {
-                kermit.i({ ee.message.toString() })
+           //     kermit.i({ ee.message.toString() })
             }
         }
 
-        kermit.i({ resp })
+     //   kermit.i({ resp })
         return  resp
     }
 

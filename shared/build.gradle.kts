@@ -8,6 +8,7 @@ plugins {
   //  kotlin("jvm")  // or kotlin("multiplatform") or any other kotlin plugin
     kotlin("plugin.serialization") version "1.8.20"
     id("com.squareup.sqldelight")
+    id("org.jetbrains.compose")
 
 
     /*
@@ -45,6 +46,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
@@ -74,6 +76,14 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
 
+
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+
               //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
              //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
                 // The serialization engine used to convert objects to and from JSON.
@@ -83,7 +93,7 @@ kotlin {
             //    implementation ("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
 
-                api("co.touchlab:kermit:0.1.8")
+             //   api("co.touchlab:kermit:0.1.8")
 
                 implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 

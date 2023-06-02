@@ -1,4 +1,4 @@
-package com.dlvtech.yomcoin.android.model.casts
+package com.dlvtech.yomcoin.casts
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
