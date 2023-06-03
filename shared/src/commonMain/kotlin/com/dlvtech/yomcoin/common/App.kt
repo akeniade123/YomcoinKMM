@@ -33,8 +33,6 @@ fun App()
     var count by remember {
         mutableStateOf(0)
     }
-
-
     Box(
         Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -47,13 +45,6 @@ fun App()
         {
             Text( "Count: $count")
         }
-
-
     }
-
-
-
-
-
 
 }
