@@ -136,9 +136,9 @@ import kotlinx.coroutines.CoroutineScope
                      }
 
                       */
-                    // SocialApp()
+                     SocialApp()
 
-                     App()
+                   //  App()
 
                  }
              }

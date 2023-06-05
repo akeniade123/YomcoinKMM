@@ -5,7 +5,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
@@ -16,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.casts.Pane
@@ -86,7 +91,6 @@ fun App()
                 }
             }
         },
-
         drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
         drawerContent = {
             DrawerHeader()
@@ -112,12 +116,116 @@ fun App()
                     ),
                 ),
                 onItemClick = {
+                    when(it.id)
+                    {
+                        "help" ->{
+
+                        }
+                    }
                     println("Clicked on ${it.title}")
                 }
             )
         }
 
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState(), true)
+                .padding(start = 24.dp)
+        )
+        {
+
+            /*
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 16.dp, bottom = 10.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val pntr:Painter = painterResource("drawable/profile_pix.png")
+                val invc:Painter = painterResource("drawable/transactions.png")
+                val qrsc:Painter = painterResource("drawable/qr_scan.png")
+                val ccre:Painter = painterResource("drawable/c_care.png")
+
+                //Icon(painter = org.jetbrains.compose.resources.painterResource("drawable/some_drawable.xml"))
+
+                val imageModifier = Modifier
+                    .size(45.dp)
+
+                val imageModifier_1 = Modifier
+                    .size(25.dp)
+
+                Row()
+                {
+
+                    Image(
+                        painter = pntr,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier,
+                        contentScale = ContentScale.FillBounds
+                    )
+
+
+
+                    //  Spacer(modifier = Modifier1.size(7.dp))
+
+                    Column(modifier = Modifier
+                        .padding(start = 2.dp)
+                        .padding(top = 15.dp)) {
+                        Text(
+                            text = "Welcome",
+                            color = Color.Black,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Normal,
+                            fontStyle = FontStyle.Italic
+                        )
+
+                        Text(
+                            text = "Adeyinka",
+                            color = Color.Black,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.SpaceBetween
+
+                ){
+                    Image(
+                        painter = invc,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+
+                    Spacer(modifier = Modifier.size(30.dp))
+
+                    Image(
+                        painter = qrsc,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+
+                    Spacer(modifier = Modifier.size(30.dp))
+
+                    Image(
+                        painter = ccre,
+                        contentDescription = "Visibility",
+                        modifier = imageModifier_1,
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
+            }
+
+
+             */
+        }
 
 
 
@@ -167,6 +275,8 @@ fun ToggleDrawerButton(drawerState: DrawerState) {
 
 
 
+
+//Icon(painter = org.jetbrains.compose.resources.painterResource("drawable/some_drawable.xml"))
 
 
 

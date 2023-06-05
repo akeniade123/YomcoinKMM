@@ -1,6 +1,7 @@
 package com.dlvtech.yomcoin.android.prelim
 
 import android.annotation.SuppressLint
+
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.R
@@ -45,8 +46,9 @@ import com.dlvtech.yomcoin.defs.withdraw
 import androidx.compose.ui.Modifier as Modifier1
 
 
-val BaseColor:Color = Color(169,16,164)
-val AccentColor:Color = Color(228,79,223)
+
+val BaseColor: Color = Color(169,16,164)
+val AccentColor:Color   = Color(228,79,223)
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -94,7 +96,6 @@ fun PrelimScreen(
             )
         )
     )
-
 
     val clubs = listOf(
         Club(
@@ -149,8 +150,6 @@ fun PrelimScreen(
         )
     )
 
-
-
     Scaffold(
         backgroundColor = Color.White,
         topBar = {
@@ -201,8 +200,6 @@ fun PrelimScreen(
                 }
             }
         }
-
-
     ) {
         Column(
             modifier = Modifier1
@@ -210,7 +207,6 @@ fun PrelimScreen(
                 .verticalScroll(rememberScrollState(), true)
                 .padding(start = 24.dp)
         ) {
-
             Row(
                 modifier = Modifier1
                     .fillMaxWidth()
