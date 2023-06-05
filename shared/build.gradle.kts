@@ -83,6 +83,8 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+      //          implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
+
 
               //  implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.20")
              //   implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.1")
@@ -225,6 +227,7 @@ android {
 }
 dependencies {
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.5")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.5.3")
 }
 
 
