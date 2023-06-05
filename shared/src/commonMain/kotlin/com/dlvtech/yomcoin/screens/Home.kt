@@ -1,4 +1,4 @@
-package com.example.bottomnavbardemo.screens
+package com.dlvtech.yomcoin.android
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
