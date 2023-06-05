@@ -9,8 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +23,9 @@ import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.defs.add_fund
 import com.dlvtech.yomcoin.defs.transfer
 import com.dlvtech.yomcoin.defs.withdraw
+import com.plcoding.navigationdrawercompose.DrawerBody
+import com.plcoding.navigationdrawercompose.DrawerHeader
+import com.plcoding.navigationdrawercompose.MenuItem
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -45,15 +47,14 @@ fun App()
 
     val scaffoldState = rememberScaffoldState()
 
+    val scope = rememberCoroutineScope()
+
 
 
     Scaffold(
         scaffoldState = scaffoldState,
-        drawerContent = { /* drawer content */ },
-        drawerGesturesEnabled = true,
         backgroundColor = Color.White,
         topBar = {
-            ToggleDrawerButton(scaffoldState.drawerState)
             TopAppBar(
                 backgroundColor = Color.White,
                 contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
@@ -63,7 +64,9 @@ fun App()
                 IconButton(modifier = Modifier
                     .clip(shape = RoundedCornerShape(25))
                     .background(BaseColor),
-                    onClick = { /*TODO*/ }) {
+                    onClick = { scope.launch {
+                        scaffoldState.drawerState.open()
+                    } }) {
                     Icon(
                         imageVector = Icons.Default.Menu,
                         contentDescription = "menu",
@@ -82,7 +85,38 @@ fun App()
                     )
                 }
             }
+        },
+
+        drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
+        drawerContent = {
+            DrawerHeader()
+            DrawerBody(
+                items = listOf(
+                    MenuItem(
+                        id = "home",
+                        title = "Home",
+                        contentDescription = "Go to home screen",
+                        icon = Icons.Default.Home
+                    ),
+                    MenuItem(
+                        id = "settings",
+                        title = "Settings",
+                        contentDescription = "Go to settings screen",
+                        icon = Icons.Default.Settings
+                    ),
+                    MenuItem(
+                        id = "help",
+                        title = "Help",
+                        contentDescription = "Get help",
+                        icon = Icons.Default.Info
+                    ),
+                ),
+                onItemClick = {
+                    println("Clicked on ${it.title}")
+                }
+            )
         }
+
     ) {
 
 

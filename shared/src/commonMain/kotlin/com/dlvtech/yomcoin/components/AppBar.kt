@@ -1,4 +1,4 @@
-package com.dlvtech.yomcoin.android.prelim
+package com.dlvtech.yomcoin.android.prelim.com.dlvtech.yomcoin.components
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
