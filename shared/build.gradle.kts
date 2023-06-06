@@ -220,11 +220,18 @@ kotlin {
     }
 }
 
+
+
+
 android {
     namespace = "com.dlvtech.yomcoin"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+
+    sourceSets["main"].apply {
+        res.srcDirs("src/androidMain/res", "src/commonMain/resources")
     }
 }
 dependencies {

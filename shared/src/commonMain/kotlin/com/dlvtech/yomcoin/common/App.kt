@@ -28,18 +28,15 @@ import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.defs.add_fund
 import com.dlvtech.yomcoin.defs.transfer
 import com.dlvtech.yomcoin.defs.withdraw
+import com.dlvtech.yomcoin.common.views.AccountPane
 import com.plcoding.navigationdrawercompose.DrawerBody
 import com.plcoding.navigationdrawercompose.DrawerHeader
 import com.plcoding.navigationdrawercompose.MenuItem
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
-
 
 val BaseColor: Color = Color(169,16,164)
 val AccentColor: Color = Color(228,79,223)
-
-
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -53,6 +50,41 @@ fun App()
     val scaffoldState = rememberScaffoldState()
 
     val scope = rememberCoroutineScope()
+
+
+
+    val panes = listOf(
+        Pane(
+            "Main Account",
+            "",
+            AccentColor,
+            listOf(
+                Tabbed(
+                    add_fund,
+                    imageResources("drawable/add_fund.png")
+                ),
+                Tabbed(
+                    transfer,
+                    imageResources("drawable/transfer.png")
+                ),
+                Tabbed(
+                    withdraw,
+                    imageResources("drawable/withdraw_cash.png")
+                )
+            )
+        ),
+        Pane(
+            "Crypto",
+            "",
+            BaseColor,
+            listOf(
+                Tabbed(
+                    withdraw,
+                    imageResources("drawable/withdraw_cash.png")
+                )
+            )
+        )
+    )
 
 
 
@@ -136,7 +168,6 @@ fun App()
         )
         {
 
-            /*
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -144,10 +175,10 @@ fun App()
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val pntr:Painter = painterResource("drawable/profile_pix.png")
-                val invc:Painter = painterResource("drawable/transactions.png")
-                val qrsc:Painter = painterResource("drawable/qr_scan.png")
-                val ccre:Painter = painterResource("drawable/c_care.png")
+                val pntr:Painter = imageResources("drawable/profile_pix.png") // painterResource("drawable/profile_pix.png")
+                val invc:Painter = imageResources("drawable/transactions.png") // painterResource("drawable/transactions.png")
+                val qrsc:Painter = imageResources("drawable/qr_scan.png") // painterResource("drawable/qr_scan.png")
+                val ccre:Painter = imageResources("drawable/c_care.png") // painterResource("drawable/c_care.png")
 
                 //Icon(painter = org.jetbrains.compose.resources.painterResource("drawable/some_drawable.xml"))
 
@@ -173,7 +204,7 @@ fun App()
 
                     Column(modifier = Modifier
                         .padding(start = 2.dp)
-                        .padding(top = 15.dp)) {
+                        .padding(top = 1.dp)) {
                         Text(
                             text = "Welcome",
                             color = Color.Black,
@@ -223,33 +254,25 @@ fun App()
                 }
             }
 
+            Text(
+                text = "Wallet",
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontSize = 12.sp,
+                modifier = Modifier.padding(bottom = 10.dp)
+            )
 
-             */
-        }
-
-
-
-    }
-
-
-    /*
-
-    Box(
-        Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ){
-        Button(
-            onClick = {
-                count++
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                items(panes){ pane ->
+                    AccountPane(pane)
+                }
             }
-        )
-        {
-            Text( "Count: $count")
+            Spacer(modifier = Modifier.size(10.dp))
         }
     }
-    
-     */
-
 }
 
 
