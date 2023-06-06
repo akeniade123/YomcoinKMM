@@ -302,26 +302,3 @@ fun ToggleDrawerButton(drawerState: DrawerState) {
 
 
 
-@Composable
-fun TabStack(name:String, pntr: Painter)
-{
-    val imageModifier = Modifier
-        .size(30.dp)
-
-    Column(modifier = Modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = pntr,
-            modifier = imageModifier,
-            contentDescription = "A poster image of a tennis player"
-        )
-
-        Text(
-            text = name,
-            color = Color.White,
-            fontSize = 8.sp,
-            modifier = Modifier.padding(bottom = 10.dp)
-        )
-    }
-}

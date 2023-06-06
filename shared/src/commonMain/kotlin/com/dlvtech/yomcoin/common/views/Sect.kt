@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import com.dlvtech.yomcoin.casts.Pane
 import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.common.BaseColor
-import com.dlvtech.yomcoin.common.TabStack
 import com.dlvtech.yomcoin.common.imageResources
+import com.dlvtech.yomcoin.components.TabStack
 
 
 @Composable
@@ -37,7 +37,7 @@ fun AccountPane(
 {
     val pntr: Painter = imageResources("drawable/transfer.png")
 
-   // val pntr: Painter = imageResources("drawable/transfer.png")
+    val foil: Painter = imageResources("drawable/foil.png")
 
     Box(
         modifier = Modifier
@@ -68,17 +68,14 @@ fun AccountPane(
 
                     Spacer(Modifier.weight(1f))
 
-
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = "Search Icon",
-                            tint = BaseColor,
-                            modifier = Modifier.size(32.dp)
-                        )
-                    }
-
-
+                    Image(
+                        modifier = Modifier
+                            .padding(end = 20.dp)
+                            .size(30.dp),
+                        painter = foil,
+                        contentDescription = "Visibility",
+                        contentScale = ContentScale.FillBounds
+                    )
                 }
 
 
