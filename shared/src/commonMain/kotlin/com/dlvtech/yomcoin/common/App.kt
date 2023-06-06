@@ -97,7 +97,6 @@ fun App()
                 contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
                 elevation = 0.dp
             ) {
-
                 IconButton(modifier = Modifier
                     .clip(shape = RoundedCornerShape(25))
                     .background(BaseColor),

@@ -37,6 +37,8 @@ fun AccountPane(
 {
     val pntr: Painter = imageResources("drawable/transfer.png")
 
+   // val pntr: Painter = imageResources("drawable/transfer.png")
+
     Box(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(10.dp))
@@ -54,8 +56,7 @@ fun AccountPane(
 
                 Row(
                     modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 12.dp),
+                        .padding(start = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 )
                 {
