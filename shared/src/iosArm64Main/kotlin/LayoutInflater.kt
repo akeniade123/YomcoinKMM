@@ -1,0 +1,2 @@
+actual abstract class LayoutInflater {
+}

@@ -48,12 +48,12 @@ fun TabStack(name:String, pntr: Painter)
 @Composable
 fun Quote(quote:String, rate:Double)
 {
-    val imageModifier = Modifier
-        .size(30.dp)
-
     Column(modifier = Modifier
         .clip(shape = RoundedCornerShape(10.dp))
-        .clickable {  },
+        .padding(start = 20.dp)
+        .clickable {
+                   
+        },
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
