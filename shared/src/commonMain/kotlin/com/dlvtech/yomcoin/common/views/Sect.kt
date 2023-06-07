@@ -50,7 +50,6 @@ fun AccountPane(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(Modifier.width(320.dp)) {
-
                 Row(
                     modifier = Modifier
                         .padding(start = 10.dp),

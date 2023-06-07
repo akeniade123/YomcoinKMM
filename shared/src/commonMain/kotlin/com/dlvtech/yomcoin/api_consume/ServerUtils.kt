@@ -7,6 +7,7 @@ import com.dlvtech.yomcoin.auth.data.eliteapi.defaultResponse
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.Data
 import com.dlvtech.yomcoin.auth.data.eliteapi.userData.User
 import com.dlvtech.yomcoin.defs.Appbase
+import com.dlvtech.yomcoin.defs.CoinApi
 import com.dlvtech.yomcoin.defs.Reloadly
 import com.dlvtech.yomcoin.defs.login
 import io.ktor.client.*
@@ -46,6 +47,14 @@ class ServerUtils {
                         append("authentication", "937a4a8c13e317dfd28effdd479cad2f")
 
                         // append(HttpHeaders.UserAgent, "ktor client")
+                    }
+                }
+
+
+                CoinApi -> {
+                    headers {
+                        append(HttpHeaders.Accept, "*/*")
+                        append("X-CoinAPI-Key", "2F9718FF-FB0B-433F-A59F-D147B79F22EA")
                     }
                 }
 

@@ -9,7 +9,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
@@ -23,16 +22,20 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.casts.Pane
 import com.dlvtech.yomcoin.casts.Tabbed
-import com.dlvtech.yomcoin.defs.add_fund
-import com.dlvtech.yomcoin.defs.transfer
-import com.dlvtech.yomcoin.defs.withdraw
+import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.common.views.AccountPane
+import com.dlvtech.yomcoin.defs.*
+import com.dlvtech.yomcoin.model.crypto.Rate
+import com.dlvtech.yomcoin.model.crypto.CurrentRates
 import com.plcoding.navigationdrawercompose.DrawerBody
 import com.plcoding.navigationdrawercompose.DrawerHeader
 import com.plcoding.navigationdrawercompose.MenuItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 val BaseColor: Color = Color(169,16,164)
@@ -50,6 +53,28 @@ fun App()
     val scaffoldState = rememberScaffoldState()
 
     val scope = rememberCoroutineScope()
+
+    val svr  = ServerUtils()
+
+
+
+
+        /*
+
+
+        "rates": [
+        {
+            "time": "2023-06-06T15:56:06.0000000Z",
+            "asset_id_quote": "$PAC",
+            "rate": 543023082.65921401979691319352
+        },
+        {
+            "time": "2023-06-06T15:56:06.0000000Z",
+            "asset_id_quote": "00",
+            "rate": 299079.4183522268171947804663
+        }
+    }
+    */
 
 
 
@@ -86,7 +111,11 @@ fun App()
         )
     )
 
+    var rate:List<Rate> = listOf(
+        Rate("PAC",543023082.65921401979691319352,"2023-06-06T15:56:06.0000000Z")
+    )
 
+   // val Rates:rates = ("BTC",rate)
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -270,6 +299,32 @@ fun App()
                 }
             }
             Spacer(modifier = Modifier.size(10.dp))
+
+
+
+            scope.launch {
+                kotlin.runCatching {
+                    val route: String = routes().cryptoApi(currentRate)
+                    //   Log.d("APiPath", route)
+
+                    val rst = withContext(Dispatchers.Default){
+                        svr.getContent(
+                            route,
+                            currentRate,
+                            CoinApi
+                        )
+                    } as CurrentRates
+
+                    rate = rst.rates
+
+                }.onSuccess {
+
+                }
+            }
+
+
+
+           // viewModel.updateUsers(rst)
         }
     }
 }

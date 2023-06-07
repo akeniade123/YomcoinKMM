@@ -31,6 +31,21 @@ class routes {
     }
 
 
+    fun cryptoApi(essence: String):String{
+        var route = ""
+        when(essence)
+        {
+            currentRate -> {
+                 route = "https://rest.coinapi.io/v1/trades/latest"
+            }
+            trades -> {
+                route = "https://rest.coinapi.io/v1/trades/latest"
+            }
+        }
+        return route
+    }
+
+
      fun eliteApi(essence: String): String
     {
         var route = ""
