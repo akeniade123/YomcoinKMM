@@ -53,33 +53,11 @@ fun App() {
         mutableStateOf(0)
     }
 
-
     val scaffoldState = rememberScaffoldState()
 
     val scope = rememberCoroutineScope()
 
     val svr  = ServerUtils()
-
-
-
-
-        /*
-
-
-        "rates": [
-        {
-            "time": "2023-06-06T15:56:06.0000000Z",
-            "asset_id_quote": "$PAC",
-            "rate": 543023082.65921401979691319352
-        },
-        {
-            "time": "2023-06-06T15:56:06.0000000Z",
-            "asset_id_quote": "00",
-            "rate": 299079.4183522268171947804663
-        }
-    }
-    */
-
 
 
     val panes = listOf(
