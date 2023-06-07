@@ -1,5 +1,6 @@
 package com.dlvtech.yomcoin.common
 
+import ViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -36,15 +37,18 @@ import com.plcoding.navigationdrawercompose.MenuItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+//import com.dlvtech.yomcoin.ViewModel
+
+
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+
 
 val BaseColor: Color = Color(169,16,164)
 val AccentColor: Color = Color(228,79,223)
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun App()
-{
+fun App() {
     var count by remember {
         mutableStateOf(0)
     }
@@ -301,6 +305,8 @@ fun App()
             Spacer(modifier = Modifier.size(10.dp))
 
 
+           // val vmdl  = ViewModel()
+            //ViewModel().viewModelScope.launch {  }
 
             scope.launch {
                 kotlin.runCatching {
