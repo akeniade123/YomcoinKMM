@@ -63,7 +63,6 @@ fun PrelimScreen(
         DataProvider.stackList
     }
 
-
     val panes = listOf(
         Pane(
             "Main Account",
@@ -383,7 +382,6 @@ val sects = listOf(
         BaseColor
     )
 )
-
  */
 
 @Preview

@@ -4,6 +4,7 @@ import ViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -28,6 +29,9 @@ import com.dlvtech.yomcoin.casts.Pane
 import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.common.views.AccountPane
+import com.dlvtech.yomcoin.components.Quote
+import com.dlvtech.yomcoin.data.datacast.CryptoData
+import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
 import com.dlvtech.yomcoin.model.crypto.Rate
 import com.dlvtech.yomcoin.model.crypto.CurrentRates
@@ -91,10 +95,6 @@ fun App() {
                 )
             )
         )
-    )
-
-    var rate:List<Rate> = listOf(
-        Rate("PAC",543023082.65921401979691319352,"2023-06-06T15:56:06.0000000Z")
     )
 
    // val Rates:rates = ("BTC",rate)
@@ -170,14 +170,13 @@ fun App() {
         }
 
     ) {
+
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .verticalScroll(rememberScrollState(), true)
                 .padding(start = 24.dp)
         )
         {
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -190,7 +189,6 @@ fun App() {
                 val qrsc:Painter = imageResources("drawable/qr_scan.png") // painterResource("drawable/qr_scan.png")
                 val ccre:Painter = imageResources("drawable/c_care.png") // painterResource("drawable/c_care.png")
 
-                //Icon(painter = org.jetbrains.compose.resources.painterResource("drawable/some_drawable.xml"))
 
                 val imageModifier = Modifier
                     .size(45.dp)
@@ -208,9 +206,6 @@ fun App() {
                         contentScale = ContentScale.FillBounds
                     )
 
-
-
-                    //  Spacer(modifier = Modifier1.size(7.dp))
 
                     Column(modifier = Modifier
                         .padding(start = 2.dp)
@@ -282,7 +277,7 @@ fun App() {
             }
             Spacer(modifier = Modifier.size(10.dp))
 
-
+            /*
            // val vmdl  = ViewModel()
             //ViewModel().viewModelScope.launch {  }
 
@@ -305,11 +300,31 @@ fun App() {
 
                 }
             }
-
-
-
            // viewModel.updateUsers(rst)
+
+             */
         }
+
+        val crypto = remember {
+            CryptoData. cryptoList
+        }
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(top = 230.dp)
+            ,
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ){
+
+            items(crypto){ crp ->
+                Quote(crp.asset_id_quote,crp.rate)
+            }
+        }
+
+
+
+
     }
 }
 
