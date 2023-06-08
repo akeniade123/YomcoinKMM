@@ -3,20 +3,20 @@ package com.dlvtech.yomcoin.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.common.BaseColor
+import com.dlvtech.yomcoin.common.imageResources
 
 
 @Composable
@@ -48,13 +48,16 @@ fun TabStack(name:String, pntr: Painter)
 @Composable
 fun Quote(quote:String, rate:Double)
 {
+
+    val pntr:Painter = imageResources("drawable/pane.png") // painterResource("drawable/profile_pix.png")
     Column(modifier = Modifier
-        .clip(shape = RoundedCornerShape(10.dp))
+        .fillMaxWidth()
+        .paint(pntr)
         .padding(start = 20.dp)
         .clickable {
-                   
-        },
-        horizontalAlignment = Alignment.CenterHorizontally
+            println("Clicked on $quote")
+        }
+        //horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         Text(
@@ -71,6 +74,21 @@ fun Quote(quote:String, rate:Double)
             modifier = Modifier.padding(bottom = 10.dp)
         )
 
+        Row(
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Spacer(Modifier.weight(1f))
+
+            Text(
+                text = "2023-06-07T13:17:45.0000000Z",
+                color = BaseColor,
+                fontSize = 7.sp,
+                modifier = Modifier.padding(bottom = 10.dp)
+            )
+
+
+        }
     }
 }
 

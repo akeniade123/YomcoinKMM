@@ -277,6 +277,34 @@ fun App() {
             }
             Spacer(modifier = Modifier.size(10.dp))
 
+            Row(
+                modifier = Modifier,
+                horizontalArrangement = Arrangement.SpaceBetween
+            )
+            {
+                Spacer(Modifier.weight(1f))
+
+                val imageModifier = Modifier
+                    .size(60.dp)
+                    .padding(15.dp)
+
+                val pntr:Painter = imageResources("drawable/bitcoin.png") // painterResource("drawable/profile_pix.png")
+
+
+                Image(
+                    painter = pntr,
+                    contentDescription = "Visibility",
+                    modifier = imageModifier,
+                    contentScale = ContentScale.FillBounds
+                )
+            }
+
+
+
+
+
+
+
             /*
            // val vmdl  = ViewModel()
             //ViewModel().viewModelScope.launch {  }
@@ -312,19 +340,13 @@ fun App() {
         LazyColumn(
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(top = 230.dp)
-            ,
+                .padding(top = 300.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ){
-
             items(crypto){ crp ->
                 Quote(crp.asset_id_quote,crp.rate)
             }
         }
-
-
-
-
     }
 }
 
