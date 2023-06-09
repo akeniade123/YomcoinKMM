@@ -57,11 +57,11 @@ fun Quote(quote:String, rate:Double)
     val flowColor by viewModel.color.collectAsState()
 
 
-    //  val pntr:Painter = imageResources("drawable/pane.9.png") // painterResource("drawable/profile_pix.png")
+    val pntr:Painter = imageResources("drawable/pane.png") // painterResource("drawable/profile_pix.png")
     Column(modifier = Modifier
         .fillMaxWidth()
-       // .paint(pntr)
-        .background(BaseColor)
+        .paint(pntr)
+      //  .background(BaseColor)
         .clip(shape = RoundedCornerShape(20.dp))
         .padding(45.dp)
 
