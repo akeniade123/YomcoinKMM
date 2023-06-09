@@ -47,6 +47,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 val BaseColor: Color = Color(169,16,164)
 val AccentColor: Color = Color(228,79,223)
+val ControlColor: Color = Color(0xF6EBEB)
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -181,7 +182,7 @@ fun App() {
                 .padding(start = 24.dp)
                 .background(Color(flowColor))
                 .clickable {
-                    viewModel.generateNewColor()
+                  //  viewModel.generateNewColor()
                 }
 
         )

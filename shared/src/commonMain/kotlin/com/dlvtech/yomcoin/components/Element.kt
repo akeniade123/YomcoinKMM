@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,7 +18,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.common.BaseColor
+import com.dlvtech.yomcoin.common.ControlColor
 import com.dlvtech.yomcoin.common.imageResources
+import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 
 
 @Composable
@@ -48,15 +52,21 @@ fun TabStack(name:String, pntr: Painter)
 @Composable
 fun Quote(quote:String, rate:Double)
 {
+    val viewModel = TimeTravelViewModel()
+    val composeColor = viewModel.composeColor
+    val flowColor by viewModel.color.collectAsState()
 
-  //  val pntr:Painter = imageResources("drawable/pane.9.png") // painterResource("drawable/profile_pix.png")
+
+    //  val pntr:Painter = imageResources("drawable/pane.9.png") // painterResource("drawable/profile_pix.png")
     Column(modifier = Modifier
         .fillMaxWidth()
        // .paint(pntr)
-        .clip(shape = RoundedCornerShape(10.dp))
         .background(BaseColor)
-        .padding(start = 20.dp)
+        .clip(shape = RoundedCornerShape(20.dp))
+        .padding(45.dp)
+
         .clickable {
+           // viewModel.generateNewColor()
             println("Clicked on $quote")
         }
         //horizontalAlignment = Alignment.CenterHorizontally
