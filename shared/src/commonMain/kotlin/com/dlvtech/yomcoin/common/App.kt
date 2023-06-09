@@ -27,6 +27,7 @@ import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.common.views.AccountPane
 import com.dlvtech.yomcoin.components.Quote
+import com.dlvtech.yomcoin.components.TabStack
 import com.dlvtech.yomcoin.data.datacast.CryptoData
 import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
@@ -174,6 +175,26 @@ fun App() {
                 contentPadding = PaddingValues(horizontal = 24.dp)
             ) {
 
+                val tabs: List<Tabbed> =listOf(Tabbed("",
+                    imageResources("drawable/transfer.png")
+                ))
+
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                )
+                {
+
+                    items(tabs){ tab->
+                        TabStack(
+                            name = tab.name,
+                            pntr = tab.image,
+                            fontsize = 8.sp,
+                            imagesize = 30.dp
+                        )
+                    }
+                }
             }
         }
 
