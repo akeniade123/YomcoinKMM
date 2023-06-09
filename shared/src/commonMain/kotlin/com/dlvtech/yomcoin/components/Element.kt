@@ -49,10 +49,12 @@ fun TabStack(name:String, pntr: Painter)
 fun Quote(quote:String, rate:Double)
 {
 
-    val pntr:Painter = imageResources("drawable/pane.png") // painterResource("drawable/profile_pix.png")
+  //  val pntr:Painter = imageResources("drawable/pane.9.png") // painterResource("drawable/profile_pix.png")
     Column(modifier = Modifier
         .fillMaxWidth()
-        .paint(pntr)
+       // .paint(pntr)
+        .clip(shape = RoundedCornerShape(10.dp))
+        .background(BaseColor)
         .padding(start = 20.dp)
         .clickable {
             println("Clicked on $quote")

@@ -85,6 +85,11 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+
+                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-6")
+
+
+
       //          implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
 
 

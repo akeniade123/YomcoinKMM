@@ -1,15 +1,12 @@
 package com.dlvtech.yomcoin.common
 
 import ViewModel
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -35,6 +32,7 @@ import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
 import com.dlvtech.yomcoin.model.crypto.Rate
 import com.dlvtech.yomcoin.model.crypto.CurrentRates
+import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 import com.plcoding.navigationdrawercompose.DrawerBody
 import com.plcoding.navigationdrawercompose.DrawerHeader
 import com.plcoding.navigationdrawercompose.MenuItem
@@ -171,10 +169,21 @@ fun App() {
 
     ) {
 
+        val viewModel = TimeTravelViewModel()
+        val composeColor = viewModel.composeColor
+        val flowColor by viewModel.color.collectAsState()
+
+
+
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState(), true)
                 .padding(start = 24.dp)
+                .background(Color(flowColor))
+                .clickable {
+                    viewModel.generateNewColor()
+                }
+
         )
         {
             Row(
@@ -276,6 +285,13 @@ fun App() {
                 }
             }
             Spacer(modifier = Modifier.size(10.dp))
+
+           // val viewModel = viewModel<TimeTravelViewModel>()
+
+          //  val viewModel: TimeTravelViewModel =
+
+
+
 
             Row(
                 modifier = Modifier,
