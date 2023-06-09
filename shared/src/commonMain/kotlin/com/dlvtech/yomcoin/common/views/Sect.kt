@@ -32,7 +32,7 @@ fun AccountPane(
         )))
 )
 {
-    val pntr: Painter = imageResources("drawable/transfer.png")
+    val pntr: Painter = imageResources("drawable/eye_closed.png")
 
     val foil: Painter = imageResources("drawable/foil.png")
 

@@ -208,7 +208,6 @@ fun App() {
 
                 Row()
                 {
-
                     Image(
                         painter = pntr,
                         contentDescription = "Visibility",

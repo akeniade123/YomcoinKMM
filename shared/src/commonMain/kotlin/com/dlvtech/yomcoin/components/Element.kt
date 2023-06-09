@@ -63,7 +63,7 @@ fun Quote(quote:String, rate:Double)
         .paint(pntr)
       //  .background(BaseColor)
         .clip(shape = RoundedCornerShape(20.dp))
-        .padding(45.dp)
+        .padding(start = 45.dp, end = 45.dp)
 
         .clickable {
            // viewModel.generateNewColor()
@@ -82,7 +82,7 @@ fun Quote(quote:String, rate:Double)
         Text(
             text = rate.toString(),
             color = BaseColor,
-            fontSize = 15.sp,
+            fontSize = 10.sp,
             modifier = Modifier.padding(bottom = 10.dp)
         )
 
@@ -91,15 +91,12 @@ fun Quote(quote:String, rate:Double)
             horizontalArrangement = Arrangement.SpaceBetween
         ){
             Spacer(Modifier.weight(1f))
-
             Text(
                 text = "2023-06-07T13:17:45.0000000Z",
                 color = BaseColor,
                 fontSize = 7.sp,
                 modifier = Modifier.padding(bottom = 10.dp)
             )
-
-
         }
     }
 }
