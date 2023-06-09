@@ -104,7 +104,8 @@ fun App() {
         topBar = {
             TopAppBar(
                 backgroundColor = Color.White,
-                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
+                contentPadding = PaddingValues(horizontal = 24.dp,
+                    vertical = 16.dp),
                 elevation = 0.dp
             ) {
                 IconButton(modifier = Modifier
@@ -166,6 +167,14 @@ fun App() {
                     println("Clicked on ${it.title}")
                 }
             )
+        },
+        bottomBar = {
+            BottomAppBar(
+                backgroundColor = Color.White,
+                contentPadding = PaddingValues(horizontal = 24.dp)
+            ) {
+
+            }
         }
 
     ) {

@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.casts.Pane
 import com.dlvtech.yomcoin.casts.Tabbed
 import com.dlvtech.yomcoin.common.BaseColor
@@ -81,21 +82,30 @@ fun AccountPane(
                     modifier = Modifier.height(40.dp)
                 )
 
-                Row(
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(top = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    LazyRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(60.dp)
+                Box(modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .fillMaxWidth()
                     )
-                    {
-                        items(acct.tabs){ tab->
-                            TabStack(name = tab.name, pntr = tab.image )
+                {
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        LazyRow(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        )
+                        {
+                            items(acct.tabs){ tab->
+                                TabStack(
+                                    name = tab.name,
+                                    pntr = tab.image,
+                                    fontsize = 8.sp,
+                                    imagesize = 30.dp
+                                )
+                            }
                         }
                     }
                 }

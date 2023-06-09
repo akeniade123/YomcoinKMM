@@ -1,7 +1,6 @@
 package com.dlvtech.yomcoin.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,19 +14,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.common.BaseColor
-import com.dlvtech.yomcoin.common.ControlColor
 import com.dlvtech.yomcoin.common.imageResources
 import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 
 
 @Composable
-fun TabStack(name:String, pntr: Painter)
+fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp)
 {
     val imageModifier = Modifier
-        .size(30.dp)
+        .size(imagesize)
 
     Column(modifier = Modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -41,7 +41,7 @@ fun TabStack(name:String, pntr: Painter)
         Text(
             text = name,
             color = Color.White,
-            fontSize = 8.sp,
+            fontSize = fontsize,
             modifier = Modifier.padding(bottom = 10.dp)
         )
     }
@@ -100,6 +100,7 @@ fun Quote(quote:String, rate:Double)
         }
     }
 }
+
 
 
 /*
