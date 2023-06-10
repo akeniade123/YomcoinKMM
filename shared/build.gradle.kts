@@ -65,6 +65,10 @@ kotlin {
 
     val material3_version = "1.0.1"
 
+    val ballastVersion = "2.3.0"
+
+    val coilVersion = "2.2.2"
+
 
 
 
@@ -77,13 +81,33 @@ kotlin {
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
-
-
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+
+                implementation("io.github.copper-leaf:ballast-core:$ballastVersion")
+                implementation("io.github.copper-leaf:ballast-navigation:$ballastVersion")
+
+
+            //    implementation("io.coil-kt:coil-compose:$coilVersion")
+
+
+                /*
+                const val compose = "io.coil-kt:coil-compose:${Versions.Coil.coilVersion}"
+                 */
+
+
+                /*
+                const val core = "io.github.copper-leaf:ballast-core:${Versions.Ballast.ballastVersion}"
+        const val navigation =
+            "io.github.copper-leaf:ballast-navigation:${Versions.Ballast.ballastVersion}"
+                 */
+
+
+            //    implementation ("androidx.compose.material3:material3:$material3_version")
 
 
                 api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-6")

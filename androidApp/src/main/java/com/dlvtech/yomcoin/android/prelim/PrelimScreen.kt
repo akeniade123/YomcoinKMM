@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.dlvtech.yomcoin.android.common.theming.SocialAppTheme
 import com.dlvtech.yomcoin.casts.BottomNavItem
 import com.dlvtech.yomcoin.casts.Pane
@@ -62,6 +63,8 @@ fun PrelimScreen(
     val sects = remember {
         DataProvider.stackList
     }
+
+    val navController = rememberNavController()
 
     val panes = listOf(
         Pane(

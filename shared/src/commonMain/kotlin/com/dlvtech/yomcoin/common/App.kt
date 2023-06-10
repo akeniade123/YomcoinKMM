@@ -9,10 +9,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.AddCircle
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -28,11 +32,14 @@ import com.dlvtech.yomcoin.components.Quote
 import com.dlvtech.yomcoin.components.TabStack
 import com.dlvtech.yomcoin.data.datacast.CryptoData
 import com.dlvtech.yomcoin.defs.*
+import com.dlvtech.yomcoin.model.BottomNavItem
 import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 import com.plcoding.navigationdrawercompose.DrawerBody
 import com.plcoding.navigationdrawercompose.DrawerHeader
 import com.plcoding.navigationdrawercompose.MenuItem
 import kotlinx.coroutines.launch
+
+//import androidx.navigation
 //import com.dlvtech.yomcoin.ViewModel
 
 
@@ -53,6 +60,9 @@ fun App() {
     val scaffoldState = rememberScaffoldState()
 
     val scope = rememberCoroutineScope()
+
+
+   // val screens = listOf(Screen.,Screen.Air, Screen.Sea)
 
     val svr  = ServerUtils()
 
@@ -168,6 +178,39 @@ fun App() {
                 contentPadding = PaddingValues(horizontal = 24.dp)
             ) {
 
+
+                val bottomNavItems = listOf(
+                    BottomNavItem(
+                        name = "Home",
+                        route = "home",
+                        icon = Icons.Rounded.Home,
+                    ),
+                    BottomNavItem(
+                        name = "Create",
+                        route = "add",
+                        icon = Icons.Rounded.AddCircle,
+                    ),
+                    BottomNavItem(
+                        name = "Settings",
+                        route = "settings",
+                        icon = Icons.Rounded.Settings,
+                    ),
+                )
+
+                BottomNavigation(backgroundColor = Color.White)
+                {
+
+                }
+
+                /*
+
+                NavigationBar(
+
+                )
+
+                 */
+
+
                 val tabs: List<Tabbed> =listOf(
                     Tabbed("Home",
                         imageResources("drawable/home.png")
@@ -199,7 +242,6 @@ fun App() {
                 }
             }
         }
-
     ) {
 
         val viewModel = TimeTravelViewModel()
@@ -400,6 +442,47 @@ fun App() {
 
 
 
+
+/*
+@Composable
+fun EquipmentScreen(equipment: EquipmentViewModel.EquipmentFlow) {
+    WorldwideEquipmentGuideTheme {// A surface container using the 'background' color from the theme
+        val navController = rememberNavController()
+        val screens = listOf(Screen.Land,Screen.Air, Screen.Sea)
+        Scaffold(//ensures proper layout strategy between topBar, bottomBar, fab, bottomSheet, content, etc.
+            //See: https://developer.android.com/jetpack/compose/navigation#bottom-nav
+            bottomBar = { BottomNavigation(backgroundColor = MaterialTheme.colors.background) {
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentDestination = navBackStackEntry?.destination
+                screens.forEach { screen ->
+                    BottomNavigationItem(
+                        icon = { Icon(ImageVector.vectorResource(screen.drawableId), stringResource(screen.stringId)) },
+                        label = { Text(stringResource(screen.stringId)) },
+                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                        onClick = { navController.navigate(screen.route) {
+                            // avoid building up a large stack of destinations on the back stack as users select items
+                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            launchSingleTop = true // Avoid multiple copies of the same destination when reselecting the same item
+                            restoreState = true // Restore state when reselecting a previously selected item
+                        }}
+                    )
+                }
+            }}
+        ) { padding ->
+            NavHost(navController, startDestination = Screen.Land.route) {
+                composable(Screen.Land.route) { EquipmentColumn(equipment.land, padding) }
+                composable(Screen.Air.route) { EquipmentColumn(equipment.air, padding) }
+                composable(Screen.Sea.route) { EquipmentColumn(equipment.sea, padding) }
+            }
+        }
+    }
+
+
+
+
+
+
+
 @Composable
 fun ToggleDrawerButton(drawerState: DrawerState) {
     val coroutineScope = rememberCoroutineScope()
@@ -417,6 +500,8 @@ fun ToggleDrawerButton(drawerState: DrawerState) {
         Text("DRAWER")
     }
 }
+
+ */
 
 
 
