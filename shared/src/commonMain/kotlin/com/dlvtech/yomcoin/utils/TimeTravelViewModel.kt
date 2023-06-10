@@ -23,10 +23,11 @@ class TimeTravelViewModel: ViewModel() {
         composeColor = color
     }
 
-    private val _clr = MutableStateFlow(0x00000000)
+    private val _clr = MutableStateFlow(0x000000)
     var tint = _clr.asStateFlow()
     fun TintColor(clr: Int){
         _clr.value = clr
+        println(clr)
     }
 
     /*

@@ -105,7 +105,8 @@ fun AccountPane(
                                     pntr = tab.image,
                                     fontsize = 8.sp,
                                     imagesize = 30.dp,
-                                    textColor = Color.White
+                                    textColor = Color.White,
+                                    pretint = Color.White
                                 )
                             }
                         }

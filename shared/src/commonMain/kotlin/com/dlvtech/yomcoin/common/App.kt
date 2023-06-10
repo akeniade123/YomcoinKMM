@@ -192,7 +192,8 @@ fun App() {
                             pntr = tab.image,
                             fontsize = 8.sp,
                             imagesize = 20.dp,
-                            textColor = BaseColor
+                            textColor = BaseColor,
+                            pretint = Color.Gray
                         )
                     }
                 }

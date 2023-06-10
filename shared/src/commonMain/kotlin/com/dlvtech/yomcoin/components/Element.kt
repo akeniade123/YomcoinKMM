@@ -25,7 +25,7 @@ import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 
 
 @Composable
-fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp, textColor:Color)
+fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp, textColor:Color,pretint:Color)
 {
     val imageModifier = Modifier
         .size(imagesize)
@@ -49,7 +49,7 @@ fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp, textC
         Image(
             painter = pntr,
             modifier = imageModifier,
-            colorFilter = ColorFilter.tint(Color(flowColor)),
+            colorFilter = ColorFilter.tint(pretint),
             contentDescription = "A poster image of a tennis player"
         )
 
