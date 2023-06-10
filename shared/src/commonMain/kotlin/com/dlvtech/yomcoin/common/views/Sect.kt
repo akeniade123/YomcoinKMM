@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -103,7 +104,8 @@ fun AccountPane(
                                     name = tab.name,
                                     pntr = tab.image,
                                     fontsize = 8.sp,
-                                    imagesize = 30.dp
+                                    imagesize = 30.dp,
+                                    textColor = Color.White
                                 )
                             }
                         }

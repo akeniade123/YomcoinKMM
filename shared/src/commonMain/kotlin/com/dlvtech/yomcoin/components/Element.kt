@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -24,23 +25,37 @@ import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 
 
 @Composable
-fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp)
+fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp, textColor:Color)
 {
     val imageModifier = Modifier
         .size(imagesize)
 
-    Column(modifier = Modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+    val viewModel = TimeTravelViewModel()
+    val composeColor = viewModel.composeColor
+    val flowColor by viewModel.tint.collectAsState()
+
+    viewModel.TintColor(0x00000000)
+
+
+    Column(modifier = Modifier
+        .clickable
+        {
+            println(name)
+            viewModel.TintColor(0xFFBBFF)
+        },
+        horizontalAlignment = Alignment.CenterHorizontally,
+
     ) {
         Image(
             painter = pntr,
             modifier = imageModifier,
+            colorFilter = ColorFilter.tint(Color(flowColor)),
             contentDescription = "A poster image of a tennis player"
         )
 
         Text(
             text = name,
-            color = Color.White,
+            color = textColor,
             fontSize = fontsize,
             modifier = Modifier.padding(bottom = 10.dp)
         )
@@ -52,9 +67,6 @@ fun TabStack(name:String, pntr: Painter, fontsize: TextUnit, imagesize:Dp)
 @Composable
 fun Quote(quote:String, rate:Double)
 {
-    val viewModel = TimeTravelViewModel()
-    val composeColor = viewModel.composeColor
-    val flowColor by viewModel.color.collectAsState()
 
 
     val pntr:Painter = imageResources("drawable/pane.png") // painterResource("drawable/profile_pix.png")

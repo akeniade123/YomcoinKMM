@@ -1,17 +1,12 @@
 package com.dlvtech.yomcoin.utils
 
 import ViewModel
-import androidx.compose.runtime.currentComposer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.rickclephas.kmm.viewmodel.KMMViewModel
 //import com.rickclephas.kmm.viewmodel.MutableStateFlow
-import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.datetime.Clock
 import kotlin.random.Random
 
 class TimeTravelViewModel: ViewModel() {
@@ -26,6 +21,12 @@ class TimeTravelViewModel: ViewModel() {
         val color = Random.nextLong(0xFFFFFFFF)
         _color.value = color
         composeColor = color
+    }
+
+    private val _clr = MutableStateFlow(0x00000000)
+    var tint = _clr.asStateFlow()
+    fun TintColor(clr: Int){
+        _clr.value = clr
     }
 
     /*

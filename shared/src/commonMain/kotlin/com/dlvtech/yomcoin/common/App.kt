@@ -1,6 +1,5 @@
 package com.dlvtech.yomcoin.common
 
-import ViewModel
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,22 +23,16 @@ import androidx.compose.ui.unit.sp
 import com.dlvtech.yomcoin.api_consume.ServerUtils
 import com.dlvtech.yomcoin.casts.Pane
 import com.dlvtech.yomcoin.casts.Tabbed
-import com.dlvtech.yomcoin.common.util.routes
 import com.dlvtech.yomcoin.common.views.AccountPane
 import com.dlvtech.yomcoin.components.Quote
 import com.dlvtech.yomcoin.components.TabStack
 import com.dlvtech.yomcoin.data.datacast.CryptoData
-import com.dlvtech.yomcoin.data.datacast.DataProvider
 import com.dlvtech.yomcoin.defs.*
-import com.dlvtech.yomcoin.model.crypto.Rate
-import com.dlvtech.yomcoin.model.crypto.CurrentRates
 import com.dlvtech.yomcoin.utils.TimeTravelViewModel
 import com.plcoding.navigationdrawercompose.DrawerBody
 import com.plcoding.navigationdrawercompose.DrawerHeader
 import com.plcoding.navigationdrawercompose.MenuItem
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 //import com.dlvtech.yomcoin.ViewModel
 
 
@@ -175,10 +168,17 @@ fun App() {
                 contentPadding = PaddingValues(horizontal = 24.dp)
             ) {
 
-                val tabs: List<Tabbed> =listOf(Tabbed("",
-                    imageResources("drawable/transfer.png")
-                ))
-
+                val tabs: List<Tabbed> =listOf(
+                    Tabbed("Home",
+                        imageResources("drawable/home.png")
+                ),
+                    Tabbed("Utility Bills",
+                        imageResources("drawable/utility_bill.png")
+                    ),
+                    Tabbed("GiftCard",
+                        imageResources("drawable/giftcard.png")
+                    )
+                )
                 LazyRow(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -191,7 +191,8 @@ fun App() {
                             name = tab.name,
                             pntr = tab.image,
                             fontsize = 8.sp,
-                            imagesize = 30.dp
+                            imagesize = 20.dp,
+                            textColor = BaseColor
                         )
                     }
                 }
