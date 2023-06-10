@@ -67,7 +67,7 @@ kotlin {
 
     val ballastVersion = "2.3.0"
 
-    val coilVersion = "2.2.2"
+    val coilVersion = "2.4.0"
 
 
 
@@ -92,7 +92,7 @@ kotlin {
                 implementation("io.github.copper-leaf:ballast-navigation:$ballastVersion")
 
 
-            //    implementation("io.coil-kt:coil-compose:$coilVersion")
+        //        implementation("io.coil-kt:coil-compose:$coilVersion")
 
 
                 /*
