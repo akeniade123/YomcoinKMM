@@ -1,10 +1,10 @@
-package io.github.tscholze.cmpsample.composables.layouts
+package com.dlvtech.yomcoin.composables.layouts
 
 import androidx.compose.runtime.Composable
 import com.copperleaf.ballast.navigation.vm.Router
-import io.github.tscholze.cmpsample.composables.components.CMPScaffold
-import io.github.tscholze.cmpsample.navigation.AppScreens
-import io.github.tscholze.cmpsample.theme.CMPTheme
+import com.dlvtech.yomcoin.composables.components.CMPScaffold
+import com.dlvtech.yomcoin.navigation.AppScreens
+import com.dlvtech.yomcoin.theme.CMPTheme
 
 /**
  * Themed-styled layout for a full screen styled page.
