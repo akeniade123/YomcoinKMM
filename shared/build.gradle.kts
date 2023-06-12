@@ -69,6 +69,8 @@ kotlin {
 
     val coilVersion = "2.4.0"
 
+    val multiplatformSettings = "1.0.0"
+
 
 
 
@@ -88,11 +90,21 @@ kotlin {
                 implementation(compose.components.resources)
 
 
+
+
                 implementation("io.github.copper-leaf:ballast-core:$ballastVersion")
                 implementation("io.github.copper-leaf:ballast-navigation:$ballastVersion")
 
+                implementation("com.russhwolf:multiplatform-settings:$multiplatformSettings")
 
-        //        implementation("io.coil-kt:coil-compose:$coilVersion")
+                implementation("com.russhwolf:multiplatform-settings-serialization:$multiplatformSettings")
+
+                implementation("com.russhwolf:multiplatform-settings-coroutines:$multiplatformSettings")
+
+
+
+
+                //        implementation("io.coil-kt:coil-compose:$coilVersion")
 
 
                 /*
@@ -195,8 +207,10 @@ kotlin {
                // implementation ("io.ktor:ktor-client-json-jvm:1.0.0")
                 implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
 
+                implementation ("androidx.preference:preference-ktx:1.2.0")
 
-               // implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
+
+                // implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
 
 
                 implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")

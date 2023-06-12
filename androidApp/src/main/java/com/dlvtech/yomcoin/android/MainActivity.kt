@@ -112,6 +112,8 @@ import kotlinx.coroutines.CoroutineScope
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
 
+     //    Androidx.context = this
+
          setContent {
              SocialAppTheme {
                  Surface(
