@@ -11,7 +11,6 @@ class SocialApplication: Application() {
         super.onCreate()
         startKoin {
             modules(appModule + getSharedModules())
-
         }
     }
 }
