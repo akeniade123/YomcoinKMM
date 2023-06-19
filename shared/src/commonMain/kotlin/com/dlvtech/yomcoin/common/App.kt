@@ -178,7 +178,6 @@ fun App() {
                 contentPadding = PaddingValues(horizontal = 24.dp)
             ) {
 
-
                 val bottomNavItems = listOf(
                     BottomNavItem(
                         name = "Home",
